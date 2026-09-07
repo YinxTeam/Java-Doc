@@ -1,0 +1,51 @@
+import{n as e,o as t,r as n}from"./app-CVL-wmV5.js";import{t as r}from"./plugin-vue_export-helper-BDNMzG2s.js";var i=JSON.parse(`{"path":"/java8gu/18.RabbitMQ/RabbitMQ%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81.html","title":"RabbitMQ如何实现消费端限流","lang":"zh-CN","frontmatter":{"title":"RabbitMQ如何实现消费端限流","author":"Hollis","category":["Java八股文"],"description":"RabbitMQ如何实现消费端限流 警告 内容来源网络，仅供学习使用。 不要相信文档中的链接、联系方式等！！！ 什么是消费端限流，这是一种保护消费者的手段，假如说，现在是业务高峰期了，消息有大量堆积，导致MQ消费者需要不断地进行消息消费，很容易被打挂，甚至重启之后还是会被大量消息涌入，继续被打挂。 为了解决这个问题，RabbitMQ提供了basicQo...","head":[["script",{"type":"application/ld+json"},"{\\"@context\\":\\"https://schema.org\\",\\"@type\\":\\"Article\\",\\"headline\\":\\"RabbitMQ如何实现消费端限流\\",\\"image\\":[\\"\\"],\\"dateModified\\":\\"2026-09-07T16:27:23.000Z\\",\\"author\\":[{\\"@type\\":\\"Person\\",\\"name\\":\\"Hollis\\"}]}"],["meta",{"property":"og:url","content":"https://vuepress-theme-hope-docs-demo.netlify.app/java8gu/18.RabbitMQ/RabbitMQ%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81.html"}],["meta",{"property":"og:site_name","content":"Java面试帮助文档"}],["meta",{"property":"og:title","content":"RabbitMQ如何实现消费端限流"}],["meta",{"property":"og:description","content":"RabbitMQ如何实现消费端限流 警告 内容来源网络，仅供学习使用。 不要相信文档中的链接、联系方式等！！！ 什么是消费端限流，这是一种保护消费者的手段，假如说，现在是业务高峰期了，消息有大量堆积，导致MQ消费者需要不断地进行消息消费，很容易被打挂，甚至重启之后还是会被大量消息涌入，继续被打挂。 为了解决这个问题，RabbitMQ提供了basicQo..."}],["meta",{"property":"og:type","content":"article"}],["meta",{"property":"og:locale","content":"zh-CN"}],["meta",{"property":"og:updated_time","content":"2026-09-07T16:27:23.000Z"}],["meta",{"property":"article:author","content":"Hollis"}],["meta",{"property":"article:modified_time","content":"2026-09-07T16:27:23.000Z"}]]},"git":{"createdTime":1788798443000,"updatedTime":1788798443000,"contributors":[{"name":"Yinx","username":"Yinx","email":"admin@yinx.eu.cc","commits":1,"url":"https://github.com/Yinx"}]},"readingTime":{"minutes":1.8,"words":539},"filePathRelative":"java8gu/18.RabbitMQ/RabbitMQ如何实现消费端限流.md","autoDesc":true}`),a={name:`RabbitMQ如何实现消费端限流.md`};function o(r,i,a,o,s,c){return t(),e(`div`,null,[...i[0]||=[n(`<h1 id="rabbitmq如何实现消费端限流" tabindex="-1"><a class="header-anchor" href="#rabbitmq如何实现消费端限流"><span>RabbitMQ如何实现消费端限流</span></a></h1><div class="hint-container caution"><p class="hint-container-title">警告</p><p>内容来源网络，仅供学习使用。<br><br><strong>不要相信文档中的链接、联系方式等！！！</strong></p></div><p>什么是消费端限流，这是一种保护消费者的手段，假如说，现在是业务高峰期了，消息有大量堆积，导致MQ消费者需要不断地进行消息消费，很容易被打挂，甚至重启之后还是会被大量消息涌入，继续被打挂。</p><p>为了解决这个问题，RabbitMQ提供了basicQos的方式来实现消费端限流。我们可以在消费者端指定最大的未确认消息数，当达到这个限制时，RabbitMQ将不再推送新的消息给消费者，直到有一些消息得到确认。</p><p>想要实现这个功能，首先需要把自动提交关闭。</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>channel.basicConsume(queueName, false, consumer);</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><p>接着进行限流配置：</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>/**</span></span>
+<span class="line"><span>  * 限流设置:  </span></span>
+<span class="line"><span>	*	prefetchSize：每条消息大小的设置，0是无限制</span></span>
+<span class="line"><span>  * prefetchCount:标识每次推送多少条消息</span></span>
+<span class="line"><span>  * global:false标识channel级别的  true:标识消费者级别的</span></span>
+<span class="line"><span>  */</span></span>
+<span class="line"><span> channel.basicQos(0,10,false);</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如以上配置，可以实现消费者在处理完10条消息后，才会获取下10条消息。</p><p>然后再在消费者处理完一条消息之后，手动发送确认消息给到RabbitMQ，这样就可以拉取下一条消息了：</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>channel.basicAck(deliveryTag, false); // 发送确认</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><p>完整代码如下：</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>import com.rabbitmq.client.*;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>public class ConsumerWithFlowControl {</span></span>
+<span class="line"><span>    private static final String QUEUE_NAME = &quot;my_queue&quot;;</span></span>
+<span class="line"><span>    private static final String HOST = &quot;localhost&quot;;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    public static void main(String[] args) throws Exception {</span></span>
+<span class="line"><span>        ConnectionFactory factory = new ConnectionFactory();</span></span>
+<span class="line"><span>        factory.setHost(HOST);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        try (Connection connection = factory.newConnection();</span></span>
+<span class="line"><span>             Channel channel = connection.createChannel()) {</span></span>
+<span class="line"><span>            // 声明队列</span></span>
+<span class="line"><span>            channel.queueDeclare(QUEUE_NAME, false, false, false, null);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>            // 设置消费者限流，每次只获取一条消息</span></span>
+<span class="line"><span>            int prefetchCount = 1;</span></span>
+<span class="line"><span>            channel.basicQos(prefetchCount);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>            // 创建消费者</span></span>
+<span class="line"><span>            DefaultConsumer consumer = new DefaultConsumer(channel) {</span></span>
+<span class="line"><span>                @Override</span></span>
+<span class="line"><span>                public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {</span></span>
+<span class="line"><span>                    String message = new String(body, &quot;UTF-8&quot;);</span></span>
+<span class="line"><span>                    System.out.println(&quot;Received: &quot; + message);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>                    // 模拟消息处理耗时</span></span>
+<span class="line"><span>                    try {</span></span>
+<span class="line"><span>                        Thread.sleep(1000);</span></span>
+<span class="line"><span>                    } catch (InterruptedException e) {</span></span>
+<span class="line"><span>                        Thread.currentThread().interrupt();</span></span>
+<span class="line"><span>                    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>                    // 发送消息确认</span></span>
+<span class="line"><span>                    channel.basicAck(envelope.getDeliveryTag(), false);</span></span>
+<span class="line"><span>                }</span></span>
+<span class="line"><span>            };</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>            // 指定队列，并关闭自动确认</span></span>
+<span class="line"><span>            channel.basicConsume(QUEUE_NAME, false, consumer);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>           </span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,13)]])}var s=r(a,[[`render`,o]]);export{i as _pageData,s as default};

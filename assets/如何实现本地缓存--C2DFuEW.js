@@ -1,0 +1,51 @@
+import{a as e,c as t,i as n,n as r,o as i,r as a,s as o,t as s}from"./app-CVL-wmV5.js";import{t as c}from"./plugin-vue_export-helper-BDNMzG2s.js";var l=JSON.parse(`{"path":"/java8gu/25.%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98.html","title":"如何实现本地缓存","lang":"zh-CN","frontmatter":{"title":"如何实现本地缓存","author":"Hollis","category":["Java八股文"],"description":"如何实现本地缓存 警告 内容来源网络，仅供学习使用。 不要相信文档中的链接、联系方式等！！！ 所谓本地缓存，就是和应用服务器在一起的缓存工具，将需要缓存的数据放到本地缓存中，可以大大的提升访问速度。 在设计本地缓存时，一般需要考虑以下几个方面的问题: 数据结构 一般来讲，为了提升缓存的效率，通常采用Key-Value结构进行数据存储，也就是说，缓存中的...","head":[["script",{"type":"application/ld+json"},"{\\"@context\\":\\"https://schema.org\\",\\"@type\\":\\"Article\\",\\"headline\\":\\"如何实现本地缓存\\",\\"image\\":[\\"\\"],\\"dateModified\\":\\"2026-09-07T16:27:23.000Z\\",\\"author\\":[{\\"@type\\":\\"Person\\",\\"name\\":\\"Hollis\\"}]}"],["meta",{"property":"og:url","content":"https://vuepress-theme-hope-docs-demo.netlify.app/java8gu/25.%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98.html"}],["meta",{"property":"og:site_name","content":"Java面试帮助文档"}],["meta",{"property":"og:title","content":"如何实现本地缓存"}],["meta",{"property":"og:description","content":"如何实现本地缓存 警告 内容来源网络，仅供学习使用。 不要相信文档中的链接、联系方式等！！！ 所谓本地缓存，就是和应用服务器在一起的缓存工具，将需要缓存的数据放到本地缓存中，可以大大的提升访问速度。 在设计本地缓存时，一般需要考虑以下几个方面的问题: 数据结构 一般来讲，为了提升缓存的效率，通常采用Key-Value结构进行数据存储，也就是说，缓存中的..."}],["meta",{"property":"og:type","content":"article"}],["meta",{"property":"og:locale","content":"zh-CN"}],["meta",{"property":"og:updated_time","content":"2026-09-07T16:27:23.000Z"}],["meta",{"property":"article:author","content":"Hollis"}],["meta",{"property":"article:modified_time","content":"2026-09-07T16:27:23.000Z"}]]},"git":{"createdTime":1788798443000,"updatedTime":1788798443000,"contributors":[{"name":"Yinx","username":"Yinx","email":"admin@yinx.eu.cc","commits":1,"url":"https://github.com/Yinx"}]},"readingTime":{"minutes":3.69,"words":1108},"filePathRelative":"java8gu/25.本地缓存/如何实现本地缓存.md","autoDesc":true}`),u={name:`如何实现本地缓存.md`};function d(c,l,u,d,f,p){let m=o(`RouteLink`);return i(),r(`div`,null,[l[1]||=a(`<h1 id="如何实现本地缓存" tabindex="-1"><a class="header-anchor" href="#如何实现本地缓存"><span>如何实现本地缓存</span></a></h1><div class="hint-container caution"><p class="hint-container-title">警告</p><p>内容来源网络，仅供学习使用。<br><br><strong>不要相信文档中的链接、联系方式等！！！</strong></p></div><p>所谓本地缓存，就是和应用服务器在一起的缓存工具，将需要缓存的数据放到本地缓存中，可以大大的提升访问速度。</p><p>在设计本地缓存时，一般需要考虑以下几个方面的问题:</p><h4 id="数据结构" tabindex="-1"><a class="header-anchor" href="#数据结构"><span>数据结构</span></a></h4><p>一般来讲，为了提升缓存的效率，通常采用Key-Value结构进行数据存储，也就是说，缓存中的数据保存和读取都需要有一个Key，通过Key来读取固定的缓存的Value。</p><h4 id="线程安全" tabindex="-1"><a class="header-anchor" href="#线程安全"><span>线程安全</span></a></h4><p>本地缓存一定要考虑线程安全的问题，因为大多数情况下本地缓存都是一个全局可访问的变量，那么就会有多个线程同时访问，所以线程安全问题不容忽视。</p><h4 id="对象上限" tabindex="-1"><a class="header-anchor" href="#对象上限"><span>对象上限</span></a></h4><p>因为是本地缓存，而本地内存中的数据是要占用JVM的堆内存的，所以内存是有上限要求的，如果无限存储，最终一定会导致OOM的问题。</p><h4 id="清除策略" tabindex="-1"><a class="header-anchor" href="#清除策略"><span>清除策略</span></a></h4><p>为了避免OOM的问题，一般会考虑在缓存中增加清除策略，通过一定的手段定期的清理掉一些数据，来保证内存占用不会过大，常见清除策略主要有有LRU(最近最少使用)、FIFO(先进先出)、LFU(最近最不常用)、SOFT(软引用)、WEAK(弱引用)等;</p><h4 id="过期时间" tabindex="-1"><a class="header-anchor" href="#过期时间"><span>过期时间</span></a></h4><p>有了清除策略并不能保证百分百的可以删除数据，极端情况会会使得某些数据一直无法删除。这时候就需要有一种机制，能够保证某些K-V一定可以删除。通常采用的方案是给每一个缓存的key设置过期时间，当达到过期时间之后直接删除,采用清除策略+过期时间双重保证;</p><p>考虑到以上这些问题之后，就可以考虑如何具体实现一个本地缓存了。</p><p><strong>最简单的方式是通过HashMap来实现一个本地缓存，因为他本身就是一种Key-Value结构的，并且如果使用ConcurrentHashMap的话，也能保证线程安全，不过需要自己实现对象上限、过期策略以及清除策略。</strong></p><p>除此之外，也有一些比较成熟的开源的本地缓存框架可以直接使用，比较常用的有：</p><ul><li>Guava Cache</li><li>Caffeine <strong>（推荐）</strong></li><li>Encache</li></ul><p>推荐优先使用Caffeine作为本地缓存，在功能上，GuavaCache支持的功能，Caffeine都支持，另外Caffeine支持异步Cache和写入外部资源，这两个Guava Cache是不支持的。Caffeine也是Spring 5中默认支持的Cache。而Caffeine在性能上要比GuavaCache好很多，主要有以下几个原因：</p><ol><li><strong>剔除算法</strong>，GuavaCache采用的是「LRU」算法，而Caffeine采用的是「Window TinyLFU」算法，这是两者之间最大，也是根本的区别。</li><li><strong>立即失效</strong>，Guava会把立即失效 (例如：expireAfterAccess(0) and expireAfterWrite(0)) 转成设置最大Size为0。这就会导致剔除提醒的原因是SIZE而不是EXPIRED。Caffeine能正确识别这种剔除原因。</li><li><strong>取代提醒</strong>，Guava只要数据被替换，不管什么原因，都会触发剔除监听器。而Caffeine在取代值和先前值的引用完全一样时不会触发监听器。</li><li><strong>异步化</strong>，Caffeine的很多工作都是交给线程池去做的（默认：ForkJoinPool.commonPool()），例如：剔除监听器，刷新机制，维护工作等。</li></ol>`,20),s(`p`,null,[e(m,{to:`/java8gu/25.%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98/%E4%BD%A0%E7%9F%A5%E9%81%93%E5%93%AA%E4%BA%9B%E7%BC%93%E5%AD%98%E5%A4%B1%E6%95%88%E7%AE%97%E6%B3%95.html`},{default:t(()=>[...l[0]||=[n(`25.本地缓存_你知道哪些缓存失效算法`,-1)]]),_:1})]),l[2]||=a(`<h1 id="扩展知识" tabindex="-1"><a class="header-anchor" href="#扩展知识"><span>扩展知识</span></a></h1><h2 id="基于caffeine实现本地缓存" tabindex="-1"><a class="header-anchor" href="#基于caffeine实现本地缓存"><span>基于Caffeine实现本地缓存</span></a></h2><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>import com.github.benmanes.caffeine.cache.Cache;</span></span>
+<span class="line"><span>import com.github.benmanes.caffeine.cache.Caffeine;</span></span>
+<span class="line"><span>import org.springframework.beans.factory.InitializingBean;</span></span>
+<span class="line"><span>import org.springframework.stereotype.Component;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>import java.util.concurrent.TimeUnit;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>/**</span></span>
+<span class="line"><span> * 本地缓存工具</span></span>
+<span class="line"><span> *</span></span>
+<span class="line"><span> * @author hollis</span></span>
+<span class="line"><span> */</span></span>
+<span class="line"><span>@Component</span></span>
+<span class="line"><span>public class LocalCacheManager implements InitializingBean {</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    private Cache&lt;String, String&gt; localCache;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    /**</span></span>
+<span class="line"><span>     * 向缓存中保存数据，如果已经存在则不覆盖</span></span>
+<span class="line"><span>     */</span></span>
+<span class="line"><span>    public void putIfNotExist(String key, String value) {</span></span>
+<span class="line"><span>        if (localCache.getIfPresent(key) == null) {</span></span>
+<span class="line"><span>            localCache.put(key, value);</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    /**</span></span>
+<span class="line"><span>     * 根据key获取缓存数据</span></span>
+<span class="line"><span>     *</span></span>
+<span class="line"><span>     * @param key</span></span>
+<span class="line"><span>     */</span></span>
+<span class="line"><span>    public String get(String key) {</span></span>
+<span class="line"><span>        return localCache.getIfPresent(key);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    public void del(String key) {</span></span>
+<span class="line"><span>        localCache.invalidate(key);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    /**</span></span>
+<span class="line"><span>     * 在bean初始化时，初始化本地缓存</span></span>
+<span class="line"><span>     */</span></span>
+<span class="line"><span>    @Override</span></span>
+<span class="line"><span>    public void afterPropertiesSet() {</span></span>
+<span class="line"><span>        localCache = Caffeine.newBuilder()</span></span>
+<span class="line"><span>            .expireAfterWrite(10, TimeUnit.SECONDS)</span></span>
+<span class="line"><span>            .expireAfterAccess(10, TimeUnit.SECONDS)</span></span>
+<span class="line"><span>            .maximumSize(1000)</span></span>
+<span class="line"><span>            .build();</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,3)])}var f=c(u,[[`render`,d]]);export{l as _pageData,f as default};

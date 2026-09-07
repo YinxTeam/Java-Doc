@@ -1,0 +1,51 @@
+import{n as e,o as t,r as n}from"./app-CVL-wmV5.js";import{t as r}from"./plugin-vue_export-helper-BDNMzG2s.js";var i=JSON.parse(`{"path":"/java8gu/14.Redis/%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8ERedisson%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97.html","title":"如何基于Redisson实现一个延迟队列","lang":"zh-CN","frontmatter":{"title":"如何基于Redisson实现一个延迟队列","author":"Hollis","category":["Java八股文"],"description":"如何基于Redisson实现一个延迟队列 警告 内容来源网络，仅供学习使用。 不要相信文档中的链接、联系方式等！！！ Redisson中定义了分布式延迟队列RDelayedQueue，这是一种基于我们前面介绍过的zset结构实现的延时队列，它允许以指定的延迟时长将元素放到目标队列中。 其实就是在zset的基础上增加了一个基于内存的延迟队列。当我们要添加...","head":[["script",{"type":"application/ld+json"},"{\\"@context\\":\\"https://schema.org\\",\\"@type\\":\\"Article\\",\\"headline\\":\\"如何基于Redisson实现一个延迟队列\\",\\"image\\":[\\"\\"],\\"dateModified\\":\\"2026-09-07T16:27:23.000Z\\",\\"author\\":[{\\"@type\\":\\"Person\\",\\"name\\":\\"Hollis\\"}]}"],["meta",{"property":"og:url","content":"https://vuepress-theme-hope-docs-demo.netlify.app/java8gu/14.Redis/%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8ERedisson%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97.html"}],["meta",{"property":"og:site_name","content":"Java面试帮助文档"}],["meta",{"property":"og:title","content":"如何基于Redisson实现一个延迟队列"}],["meta",{"property":"og:description","content":"如何基于Redisson实现一个延迟队列 警告 内容来源网络，仅供学习使用。 不要相信文档中的链接、联系方式等！！！ Redisson中定义了分布式延迟队列RDelayedQueue，这是一种基于我们前面介绍过的zset结构实现的延时队列，它允许以指定的延迟时长将元素放到目标队列中。 其实就是在zset的基础上增加了一个基于内存的延迟队列。当我们要添加..."}],["meta",{"property":"og:type","content":"article"}],["meta",{"property":"og:locale","content":"zh-CN"}],["meta",{"property":"og:updated_time","content":"2026-09-07T16:27:23.000Z"}],["meta",{"property":"article:author","content":"Hollis"}],["meta",{"property":"article:modified_time","content":"2026-09-07T16:27:23.000Z"}]]},"git":{"createdTime":1788798443000,"updatedTime":1788798443000,"contributors":[{"name":"Yinx","username":"Yinx","email":"admin@yinx.eu.cc","commits":1,"url":"https://github.com/Yinx"}]},"readingTime":{"minutes":1.91,"words":572},"filePathRelative":"java8gu/14.Redis/如何基于Redisson实现一个延迟队列.md","autoDesc":true}`),a={name:`如何基于Redisson实现一个延迟队列.md`};function o(r,i,a,o,s,c){return t(),e(`div`,null,[...i[0]||=[n(`<h1 id="如何基于redisson实现一个延迟队列" tabindex="-1"><a class="header-anchor" href="#如何基于redisson实现一个延迟队列"><span>如何基于Redisson实现一个延迟队列</span></a></h1><div class="hint-container caution"><p class="hint-container-title">警告</p><p>内容来源网络，仅供学习使用。<br><br><strong>不要相信文档中的链接、联系方式等！！！</strong></p></div><p>Redisson中定义了分布式延迟队列<strong>RDelayedQueue</strong>，这是一种基于我们前面介绍过的zset结构实现的延时队列，它允许以指定的延迟时长将元素放到目标队列中。</p><p>其实就是在zset的基础上增加了一个基于内存的延迟队列。当我们要添加一个数据到延迟队列的时候，redisson会把数据+超时时间放到zset中，并且起一个延时任务，当任务到期的时候，再去zset中把数据取出来，返回给客户端使用。</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>&lt;dependency&gt;</span></span>
+<span class="line"><span>    &lt;groupId&gt;org.redisson&lt;/groupId&gt;</span></span>
+<span class="line"><span>    &lt;artifactId&gt;redisson&lt;/artifactId&gt;</span></span>
+<span class="line"><span>    &lt;version&gt;最新版&lt;/version&gt; </span></span>
+<span class="line"><span>&lt;/dependency&gt;</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>定义一个Redisson客户端：</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span> /**</span></span>
+<span class="line"><span> * @author Hollis</span></span>
+<span class="line"><span> */</span></span>
+<span class="line"><span>@Configuration</span></span>
+<span class="line"><span>public class RedissonConfig {</span></span>
+<span class="line"><span>    </span></span>
+<span class="line"><span>    @Bean(destroyMethod=&quot;shutdown&quot;)</span></span>
+<span class="line"><span>    public RedissonClient redisson() throws IOException {</span></span>
+<span class="line"><span>        Config config = new Config();</span></span>
+<span class="line"><span>		config.useSingleServer().setAddress(&quot;redis://127.0.0.1:6379&quot;);</span></span>
+<span class="line"><span>		RedissonClient redisson = Redisson.create(config);</span></span>
+<span class="line"><span>        return redisson;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>接下来，在想要使用延迟队列的地方做如下方式：</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>import org.redisson.api.RBlockingDeque;</span></span>
+<span class="line"><span>import org.redisson.api.RDelayedQueue;</span></span>
+<span class="line"><span>import org.redisson.api.RedissonClient;</span></span>
+<span class="line"><span>import org.springframework.beans.factory.annotation.Autowired;</span></span>
+<span class="line"><span>import org.springframework.stereotype.Component;</span></span>
+<span class="line"><span>import java.time.LocalDateTime;</span></span>
+<span class="line"><span>import java.time.format.DateTimeFormatter;</span></span>
+<span class="line"><span>import java.util.concurrent.TimeUnit;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>@Component</span></span>
+<span class="line"><span>public class RedissonOrderDelayQueue {</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    @Autowired</span></span>
+<span class="line"><span>    RedissonClient redisson;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    public void addTaskToDelayQueue(String orderId) {</span></span>
+<span class="line"><span>      </span></span>
+<span class="line"><span>        RBlockingDeque&lt;String&gt; blockingDeque = redisson.getBlockingDeque(&quot;orderQueue&quot;);</span></span>
+<span class="line"><span>        RDelayedQueue&lt;String&gt; delayedQueue = redisson.getDelayedQueue(blockingDeque);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        System.out.println(LocalDateTime.now().format(DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;)) + &quot;添加任务到延时队列里面&quot;);</span></span>
+<span class="line"><span>        delayedQueue.offer(orderId, 3, TimeUnit.SECONDS);</span></span>
+<span class="line"><span>        delayedQueue.offer(orderId, 6, TimeUnit.SECONDS);</span></span>
+<span class="line"><span>        delayedQueue.offer(orderId, 9, TimeUnit.SECONDS);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>   public String getOrderFromDelayQueue() {</span></span>
+<span class="line"><span>        RBlockingDeque&lt;String&gt; blockingDeque = redisson.getBlockingDeque(&quot;orderQueue&quot;);</span></span>
+<span class="line"><span>        RDelayedQueue&lt;String&gt; delayedQueue = redisson.getDelayedQueue(blockingDeque);</span></span>
+<span class="line"><span>        String orderId = blockingDeque.take();</span></span>
+<span class="line"><span>        return orderId;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>使用offer方法将两条延迟消息添加到RDelayedQueue中，使用take方法从RQueue中获取消息，如果没有消息可用，该方法会阻塞等待，直到消息到达。</p><p>我们使用 RDelayedQueue 的 offer 方法将元素添加到延迟队列，并指定延迟的时间。当元素的延迟时间到达时，Redisson 会将元素从 RDelayedQueue 转移到关联的 RBlockingDeque 中。</p><p>使用 RBlockingDeque 的 take 方法从关联的 RBlockingDeque 中获取元素。这是一个阻塞操作，如果没有元素可用，它会等待直到有元素可用。</p><p>所以，为了从延迟队列中取出元素，使用 RBlockingDeque 的 take 方法，因为 Redisson 的 RDelayedQueue 实际上是通过转移元素到关联的 RBlockingDeque 来实现延迟队列的。</p>`,13)]])}var s=r(a,[[`render`,o]]);export{i as _pageData,s as default};

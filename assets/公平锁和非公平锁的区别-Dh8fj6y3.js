@@ -1,0 +1,61 @@
+import{n as e,o as t,r as n}from"./app-CVL-wmV5.js";import{t as r}from"./plugin-vue_export-helper-BDNMzG2s.js";var i=JSON.parse(`{"path":"/java8gu/04.Java%E5%B9%B6%E5%8F%91/%E5%85%AC%E5%B9%B3%E9%94%81%E5%92%8C%E9%9D%9E%E5%85%AC%E5%B9%B3%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB.html","title":"公平锁和非公平锁的区别","lang":"zh-CN","frontmatter":{"title":"公平锁和非公平锁的区别","author":"Hollis","category":["Java八股文"],"description":"公平锁和非公平锁的区别 警告 内容来源网络，仅供学习使用。 不要相信文档中的链接、联系方式等！！！ 非公平锁：多个线程不按照申请锁的顺序去获得锁，而是直接去尝试获取锁，获取不到，再进入队列等待，如果能获取到，就直接获取到锁。 image.pngimage.png 公平锁：多个线程按照申请锁的顺序去获得锁，所有线程都在队列里排队，这样就保证了队列中的第一...","head":[["script",{"type":"application/ld+json"},"{\\"@context\\":\\"https://schema.org\\",\\"@type\\":\\"Article\\",\\"headline\\":\\"公平锁和非公平锁的区别\\",\\"image\\":[\\"\\"],\\"dateModified\\":\\"2026-09-07T16:27:23.000Z\\",\\"author\\":[{\\"@type\\":\\"Person\\",\\"name\\":\\"Hollis\\"}]}"],["meta",{"property":"og:url","content":"https://vuepress-theme-hope-docs-demo.netlify.app/java8gu/04.Java%E5%B9%B6%E5%8F%91/%E5%85%AC%E5%B9%B3%E9%94%81%E5%92%8C%E9%9D%9E%E5%85%AC%E5%B9%B3%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB.html"}],["meta",{"property":"og:site_name","content":"Java面试帮助文档"}],["meta",{"property":"og:title","content":"公平锁和非公平锁的区别"}],["meta",{"property":"og:description","content":"公平锁和非公平锁的区别 警告 内容来源网络，仅供学习使用。 不要相信文档中的链接、联系方式等！！！ 非公平锁：多个线程不按照申请锁的顺序去获得锁，而是直接去尝试获取锁，获取不到，再进入队列等待，如果能获取到，就直接获取到锁。 image.pngimage.png 公平锁：多个线程按照申请锁的顺序去获得锁，所有线程都在队列里排队，这样就保证了队列中的第一..."}],["meta",{"property":"og:type","content":"article"}],["meta",{"property":"og:locale","content":"zh-CN"}],["meta",{"property":"og:updated_time","content":"2026-09-07T16:27:23.000Z"}],["meta",{"property":"article:author","content":"Hollis"}],["meta",{"property":"article:modified_time","content":"2026-09-07T16:27:23.000Z"}]]},"git":{"createdTime":1788798443000,"updatedTime":1788798443000,"contributors":[{"name":"Yinx","username":"Yinx","email":"admin@yinx.eu.cc","commits":1,"url":"https://github.com/Yinx"}]},"readingTime":{"minutes":2.97,"words":890},"filePathRelative":"java8gu/04.Java并发/公平锁和非公平锁的区别.md","autoDesc":true}`),a={name:`公平锁和非公平锁的区别.md`};function o(r,i,a,o,s,c){return t(),e(`div`,null,[...i[0]||=[n(`<h1 id="公平锁和非公平锁的区别" tabindex="-1"><a class="header-anchor" href="#公平锁和非公平锁的区别"><span>公平锁和非公平锁的区别</span></a></h1><div class="hint-container caution"><p class="hint-container-title">警告</p><p>内容来源网络，仅供学习使用。<br><br><strong>不要相信文档中的链接、联系方式等！！！</strong></p></div><ul><li><strong>非公平锁</strong>：多个线程<strong>不按照申请锁的顺序</strong>去获得锁，而是直接去尝试获取锁，获取不到，再进入队列等待，如果能获取到，就直接获取到锁。</li></ul><figure><img src="/assets/%E5%85%AC%E5%B9%B3%E9%94%81%E5%92%8C%E9%9D%9E%E5%85%AC%E5%B9%B3%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB_-1-BxRS7XRU.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure><ul><li><strong>公平锁</strong>：多个线程<strong>按照申请锁的顺序</strong>去获得锁，所有线程都在队列里排队，这样就保证了队列中的第一个先得到锁。</li></ul><figure><img src="/assets/%E5%85%AC%E5%B9%B3%E9%94%81%E5%92%8C%E9%9D%9E%E5%85%AC%E5%B9%B3%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB_-2-Dhm4H-7H.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure><p>两种锁分别适合不同的场景中，存在着各自的优缺点，<strong>对于公平锁来说，他的优点是所有的线程都能得到资源，不会饿死在队列中。但是他存在着吞吐量会下降很多，队列里面除了第一个线程，其他的线程都会阻塞，cpu唤醒阻塞线程的开销会很大的缺点。</strong></p><p>而<strong>对于非公平锁来说，他可以减少CPU唤醒线程的开销，整体的吞吐效率会高点，CPU也不必去唤醒所有线程，会减少唤起线程的数量。但是他可能会导致队列中排队的线程一直获取不到锁或者长时间获取不到锁，活活饿死的情况。</strong></p><h1 id="扩展知识" tabindex="-1"><a class="header-anchor" href="#扩展知识"><span>扩展知识</span></a></h1><p>ReentrantLock 分为公平锁和非公平锁，可以通过构造方法来指定具体类型：</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>//默认非公平锁</span></span>
+<span class="line"><span>public ReentrantLock() {</span></span>
+<span class="line"><span>	sync = new NonfairSync();</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>//公平锁</span></span>
+<span class="line"><span>public ReentrantLock(boolean fair) {</span></span>
+<span class="line"><span>	sync = fair ? new FairSync() : new NonfairSync();</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>默认一般使用<strong>非公平锁</strong>，它的效率和吞吐量都比公平锁高的多。</p><h2 id="reentrantlock的非公平锁实现" tabindex="-1"><a class="header-anchor" href="#reentrantlock的非公平锁实现"><span>reentrantLock的非公平锁实现</span></a></h2><p>非公平锁的lock的核心逻辑在NonfairSync中，具体代码如下：</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>/**</span></span>
+<span class="line"><span> * Sync object for non-fair locks</span></span>
+<span class="line"><span> */</span></span>
+<span class="line"><span>static final class NonfairSync extends Sync {</span></span>
+<span class="line"><span>    private static final long serialVersionUID = 7316153563782823691L;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    /**</span></span>
+<span class="line"><span>     * Performs lock.  Try immediate barge, backing up to normal</span></span>
+<span class="line"><span>     * acquire on failure.</span></span>
+<span class="line"><span>     */</span></span>
+<span class="line"><span>    final void lock() {</span></span>
+<span class="line"><span>        if (compareAndSetState(0, 1))</span></span>
+<span class="line"><span>            setExclusiveOwnerThread(Thread.currentThread());</span></span>
+<span class="line"><span>        else</span></span>
+<span class="line"><span>            acquire(1);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    protected final boolean tryAcquire(int acquires) {</span></span>
+<span class="line"><span>        return nonfairTryAcquire(acquires);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><a href="https://blog.csdn.net/weixin_39309402/article/details/106466843" target="_blank" rel="noopener noreferrer"><br></a></p><p>从代码里可以看出，lock方法执行的时候会先用cas来判断当前锁是否有线程在占用，如果cas成功，也就是成功将1设到state上去了的话，那么当时锁是没有线程在占用的，那么最后会执行将当前线程设到AbstractOwnableSynchronizer中。</p><p>也就是说，在非公平锁中，如果有线程尝试获取锁的时候，不会直接排队，而是先通过CAS尝试获取锁，获取到了就直接用， 获取不到再排队。</p><h2 id="reentrantlock的公平锁实现" tabindex="-1"><a class="header-anchor" href="#reentrantlock的公平锁实现"><span>reentrantLock的公平锁实现</span></a></h2><p>公平锁的lock的核心逻辑在FairSync中，具体代码如下：</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span></span></span>
+<span class="line"><span>/**</span></span>
+<span class="line"><span> * Sync object for fair locks</span></span>
+<span class="line"><span> */</span></span>
+<span class="line"><span>static final class FairSync extends Sync {</span></span>
+<span class="line"><span>    private static final long serialVersionUID = -3000897897090466540L;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    final void lock() {</span></span>
+<span class="line"><span>        acquire(1);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    /**</span></span>
+<span class="line"><span>     * Fair version of tryAcquire.  Don&#39;t grant access unless</span></span>
+<span class="line"><span>     * recursive call or no waiters or is first.</span></span>
+<span class="line"><span>     */</span></span>
+<span class="line"><span>    protected final boolean tryAcquire(int acquires) {</span></span>
+<span class="line"><span>        final Thread current = Thread.currentThread();</span></span>
+<span class="line"><span>        int c = getState();</span></span>
+<span class="line"><span>        if (c == 0) {</span></span>
+<span class="line"><span>            if (!hasQueuedPredecessors() &amp;&amp;</span></span>
+<span class="line"><span>                compareAndSetState(0, acquires)) {</span></span>
+<span class="line"><span>                setExclusiveOwnerThread(current);</span></span>
+<span class="line"><span>                return true;</span></span>
+<span class="line"><span>            }</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>        else if (current == getExclusiveOwnerThread()) {</span></span>
+<span class="line"><span>            int nextc = c + acquires;</span></span>
+<span class="line"><span>            if (nextc &lt; 0)</span></span>
+<span class="line"><span>                throw new Error(&quot;Maximum lock count exceeded&quot;);</span></span>
+<span class="line"><span>            setState(nextc);</span></span>
+<span class="line"><span>            return true;</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>        return false;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>公平锁的lock方法在进行cas判断时多了一个<code>hasQueuedPredecessors</code>的判断，它会在AQS队列中没有线程的情况下才会申请锁，而不像非公平锁一样，非公平锁一来不管AQS里是否有排队的线程就直接申请锁。</p>`,23)]])}var s=r(a,[[`render`,o]]);export{i as _pageData,s as default};

@@ -1,0 +1,85 @@
+import{n as e,o as t,r as n}from"./app-CVL-wmV5.js";import{t as r}from"./plugin-vue_export-helper-BDNMzG2s.js";var i=JSON.parse(`{"path":"/java8gu/06.Spring/BeanFactory%E5%92%8CFactroyBean%E7%9A%84%E5%85%B3%E7%B3%BB.html","title":"BeanFactory和FactroyBean的关系","lang":"zh-CN","frontmatter":{"title":"BeanFactory和FactroyBean的关系","author":"Hollis","category":["Java八股文"],"description":"BeanFactory和FactroyBean的关系 警告 内容来源网络，仅供学习使用。 不要相信文档中的链接、联系方式等！！！ FactoryBean和BeanFactory是Spring中的两个重要的概念。先看一下他们的类定义： FactoryBean： BeanFactory： 至少从代码上来看，这两个东西都是接口（interface)，然后都是...","head":[["script",{"type":"application/ld+json"},"{\\"@context\\":\\"https://schema.org\\",\\"@type\\":\\"Article\\",\\"headline\\":\\"BeanFactory和FactroyBean的关系\\",\\"image\\":[\\"\\"],\\"dateModified\\":\\"2026-09-07T16:27:23.000Z\\",\\"author\\":[{\\"@type\\":\\"Person\\",\\"name\\":\\"Hollis\\"}]}"],["meta",{"property":"og:url","content":"https://vuepress-theme-hope-docs-demo.netlify.app/java8gu/06.Spring/BeanFactory%E5%92%8CFactroyBean%E7%9A%84%E5%85%B3%E7%B3%BB.html"}],["meta",{"property":"og:site_name","content":"Java面试帮助文档"}],["meta",{"property":"og:title","content":"BeanFactory和FactroyBean的关系"}],["meta",{"property":"og:description","content":"BeanFactory和FactroyBean的关系 警告 内容来源网络，仅供学习使用。 不要相信文档中的链接、联系方式等！！！ FactoryBean和BeanFactory是Spring中的两个重要的概念。先看一下他们的类定义： FactoryBean： BeanFactory： 至少从代码上来看，这两个东西都是接口（interface)，然后都是..."}],["meta",{"property":"og:type","content":"article"}],["meta",{"property":"og:locale","content":"zh-CN"}],["meta",{"property":"og:updated_time","content":"2026-09-07T16:27:23.000Z"}],["meta",{"property":"article:author","content":"Hollis"}],["meta",{"property":"article:modified_time","content":"2026-09-07T16:27:23.000Z"}]]},"git":{"createdTime":1788798443000,"updatedTime":1788798443000,"contributors":[{"name":"Yinx","username":"Yinx","email":"admin@yinx.eu.cc","commits":1,"url":"https://github.com/Yinx"}]},"readingTime":{"minutes":4.81,"words":1444},"filePathRelative":"java8gu/06.Spring/BeanFactory和FactroyBean的关系.md","autoDesc":true}`),a={name:`BeanFactory和FactroyBean的关系.md`};function o(r,i,a,o,s,c){return t(),e(`div`,null,[...i[0]||=[n(`<h1 id="beanfactory和factroybean的关系" tabindex="-1"><a class="header-anchor" href="#beanfactory和factroybean的关系"><span>BeanFactory和FactroyBean的关系</span></a></h1><div class="hint-container caution"><p class="hint-container-title">警告</p><p>内容来源网络，仅供学习使用。<br><br><strong>不要相信文档中的链接、联系方式等！！！</strong></p></div><p>FactoryBean和BeanFactory是Spring中的两个重要的概念。先看一下他们的类定义：</p><p>FactoryBean：</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>package org.springframework.beans.factory;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>public interface FactoryBean&lt;T&gt; {</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  T getObject() throws Exception;</span></span>
+<span class="line"><span>  </span></span>
+<span class="line"><span>  Class&lt;?&gt; getObjectType();</span></span>
+<span class="line"><span>  </span></span>
+<span class="line"><span>  boolean isSingleton();</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>BeanFactory：</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>package org.springframework.beans.factory;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>public interface BeanFactory {</span></span>
+<span class="line"><span>	Object getBean(String name) throws BeansException;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  &lt;T&gt; T getBean(String name, Class&lt;T&gt; requiredType) throws BeansException;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Object getBean(String name, Object... args) throws BeansException;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  &lt;T&gt; T getBean(Class&lt;T&gt; requiredType) throws BeansException;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  &lt;T&gt; T getBean(Class&lt;T&gt; requiredType, Object... args) throws BeansException;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  boolean containsBean(String name);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  boolean isSingleton(String name) throws NoSuchBeanDefinitionException;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  boolean isPrototype(String name) throws NoSuchBeanDefinitionException;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // ...</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>至少从代码上来看，这两个东西<strong>都是接口（interface)</strong>，然后<strong>都是在org.springframework.beans.factory包</strong>下面的。</p><p>网上有很多概念的解释，说明他俩的区别，但是很多人还是看不懂，下面是的解释我结合了具体的case，帮助大家更好地理解他们的作用，理解了各自的作用，那么区别自然也就理解了。</p><h3 id="beanfactory" tabindex="-1"><a class="header-anchor" href="#beanfactory"><span>BeanFactory</span></a></h3><p>BeanFactory比较常用，名字也比较容易理解，就<strong>是Bean工厂，他是整个Spring IoC容器的一部分，负责管理Bean的创建和生命周期。</strong></p><p>其中提供了一系列方法，可以让我们获取到具体的Bean实例。你可能没有直接用过BeanFactory，但是你肯定用过或者见过：</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>applicationContext.getBean(requiredType);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>applicationContext.getBean(name);</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>以上就是我们经常用的，在Spring的上下文中通过bean名称或者类型获取bean的方式，而这里的ApplicationContext，其实就是一种BeanFactory。这里面调用的getBean方法，就是上面我们在BeanFactory中看到的方法。</p><p>所以，<strong>BeanFactory是Spring IoC容器的一个接口，用来获取Bean以及管理Bean的依赖注入和生命周期。</strong></p><h3 id="factorybean" tabindex="-1"><a class="header-anchor" href="#factorybean"><span>FactoryBean</span></a></h3><p><strong>FactoryBean是一个接口，用于定义一个工厂Bean，它可以产生某种类型的对象。</strong>当在Spring配置文件中定义一个Bean时，如果这个Bean实现了FactoryBean接口，那么Spring容器不直接返回这个Bean实例，而是返回FactoryBean#getObject()方法所返回的对象。</p><p><s>是不是还是听不懂？</s></p><p>那我给你举个具体的例子你就知道了。</p><p>Dubbo用过吧（没用过？那可能理解起来比较吃力，因为FactoryBean确实是在很多框架中用到的比较多，比如Kafka、dubbo等各种框架中都会用他来和Spring做集成）。</p><p>当我们想要在Dubbo中定义一个远程的提供者提供的的Bean的时候，可以用@DubboReference或者<code>&lt;dubbo:reference&gt;</code></p><p>而<strong>这两种定义方式的最终实现都是一个Dubbo中的****ReferenceBean</strong> <strong>，它负责创建并管理远程服务代理对象。而这个****ReferenceBean就是一个FactoryBean的实现。</strong></p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>public class ReferenceBean&lt;T&gt; implements FactoryBean&lt;T&gt;,</span></span>
+<span class="line"><span>        ApplicationContextAware, BeanClassLoaderAware, BeanNameAware, InitializingBean, DisposableBean {</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote><p>ReferenceBean的主要作用是创建并配置Dubbo服务的代理对象。这些代理对象允许客户端像调用本地方法一样调用远程服务。创建Dubbo服务代理通常涉及复杂的配置和初始化过程，包括网络通信设置、序列化配置等。通过ReferenceBean将这些复杂性封装起来，对于使用者来说，只需要通过简单的Spring配置即可使用服务。</p></blockquote><p>ReferenceBean 实现了 FactoryBean 接口并实现了getObject方法。在getObject()方法中，ReferenceBean会给要调用的服务创建一个动态代理对象。这个代理对象负责与远程服务进行通信，封装了网络调用的细节，使得远程方法调用对于开发者来说是透明的。</p><p>通过 FactoryBean 实现，ReferenceBean 还可以延迟创建代理对象直到真正需要时，这样可以提升启动速度并减少资源消耗。此外，它还可以实现更复杂的加载策略和优化。</p><p>通过实现 FactoryBean，ReferenceBean 能够很好地与Spring框架集成。这意味着它可以利用Spring的依赖注入，生命周期管理等特性，并且能够被Spring容器所管理。</p><p>所以，<strong>FactoryBean通常用于创建很复杂的对象，比如需要通过某种特定的创建过程才能得到的对象。例如，创建与JNDI资源的连接或与代理对象的创建。就如我们的Dubbo中的ReferenceBean。</strong></p><h1 id="扩展知识" tabindex="-1"><a class="header-anchor" href="#扩展知识"><span>扩展知识</span></a></h1><h2 id="applicationcontext使用" tabindex="-1"><a class="header-anchor" href="#applicationcontext使用"><span>ApplicationContext使用</span></a></h2><p>我们知道，ApplicationContext作为BeanFactory的具体实现，他可以在Spring的的上下文中获取Bean，那么什么时候可以用到它呢？</p><p>一般来说，我们的Bean都是有Spring自动注入的，不太需要我们自己从上下文中获取，但是想让Spring帮忙注入，有一个前提，那就是必须被注入的Bean和注入的Bean都交给Spring托管，简单点说就是要有@Service和@Autowire一起用。</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>@Service</span></span>
+<span class="line"><span>public class HollisTestService{</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	@Autowired</span></span>
+<span class="line"><span>  private HollisTestRepo hollisTestRepo;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这样才能把HollisTestRepo注入到HollisTestService中，但是有的时候，我们的HollisTestService如果不是Spring托管的呢，比如是自己new的，那就不行了。</p><p>比较典型的是当有的时候我们使用充血模型，需要在里面去查询或者操作数据库的时候，就需要在这个模型中获取到对应的bean。那么就需要ApplicationContext了。</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>public class CaseModel {</span></span>
+<span class="line"><span>	 CollectionCaseItemService collectionCaseItemService = SpringContextHolder.getBean(CollectionCaseItemService.class);</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这里面SpringContextHolder的实现如下：</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>import org.springframework.beans.BeansException;</span></span>
+<span class="line"><span>import org.springframework.context.ApplicationContext;</span></span>
+<span class="line"><span>import org.springframework.context.ApplicationContextAware;</span></span>
+<span class="line"><span>import org.springframework.stereotype.Component;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>/**</span></span>
+<span class="line"><span> * Spring上下文工具</span></span>
+<span class="line"><span> *</span></span>
+<span class="line"><span> * @author Hollis</span></span>
+<span class="line"><span> */</span></span>
+<span class="line"><span>@Component</span></span>
+<span class="line"><span>public class SpringContextHolder implements ApplicationContextAware {</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    private static ApplicationContext applicationContext;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    @Override</span></span>
+<span class="line"><span>    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {</span></span>
+<span class="line"><span>        SpringContextHolder.applicationContext = applicationContext;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    /**</span></span>
+<span class="line"><span>     * 根据bean的名字获取Bean</span></span>
+<span class="line"><span>     *</span></span>
+<span class="line"><span>     * @param name</span></span>
+<span class="line"><span>     * @return</span></span>
+<span class="line"><span>     * @throws BeansException</span></span>
+<span class="line"><span>     */</span></span>
+<span class="line"><span>    public static Object getBean(String name) throws BeansException {</span></span>
+<span class="line"><span>        return applicationContext.getBean(name);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    /**</span></span>
+<span class="line"><span>     * 根据bean的类型获取Bean</span></span>
+<span class="line"><span>     *</span></span>
+<span class="line"><span>     * @param requiredType</span></span>
+<span class="line"><span>     * @param &lt;T&gt;</span></span>
+<span class="line"><span>     * @return</span></span>
+<span class="line"><span>     * @throws BeansException</span></span>
+<span class="line"><span>     */</span></span>
+<span class="line"><span>    public static &lt;T&gt; T getBean(Class&lt;T&gt; requiredType) throws BeansException {</span></span>
+<span class="line"><span>        return applicationContext.getBean(requiredType);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,38)]])}var s=r(a,[[`render`,o]]);export{i as _pageData,s as default};

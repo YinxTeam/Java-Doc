@@ -1,0 +1,68 @@
+import{a as e,c as t,i as n,n as r,o as i,r as a,s as o,t as s}from"./app-CVL-wmV5.js";import{t as c}from"./plugin-vue_export-helper-BDNMzG2s.js";var l=JSON.parse(`{"path":"/java8gu/50.%E9%A1%B9%E7%9B%AE%E9%9A%BE%E7%82%B9_%E4%BA%AE%E7%82%B9/%E5%9F%BA%E4%BA%8ESpring_Event_%E5%AE%9E%E7%8E%B0%E5%90%8C%E6%AD%A5%E8%BD%AC%E5%BC%82%E6%AD%A5_%E8%A7%A3%E5%86%B3%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%89%AB%E8%A1%A8%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%B8%8D%E5%A4%9F%E7%9A%84%E9%97%AE%E9%A2%98.html","title":"基于Spring_Event,实现同步转异步,解决定时任务扫表导致数据库连接池不够的问题","lang":"zh-CN","frontmatter":{"title":"基于Spring_Event,实现同步转异步,解决定时任务扫表导致数据库连接池不够的问题","author":"Hollis","category":["Java八股文"],"description":"基于Spring_Event,实现同步转异步,解决定时任务扫表导致数据库连接池不够的问题 警告 内容来源网络，仅供学习使用。 不要相信文档中的链接、联系方式等！！！ 背景 有这样一个业务场景，作为一个金融产品，很多用户会在借款后发生逾期，每一笔逾期都是一笔单独的借据，在贷后催收环节中，需要基于用户维度做聚合，把多笔借据合并成一个案件进行统一的催收。 那...","head":[["script",{"type":"application/ld+json"},"{\\"@context\\":\\"https://schema.org\\",\\"@type\\":\\"Article\\",\\"headline\\":\\"基于Spring_Event,实现同步转异步,解决定时任务扫表导致数据库连接池不够的问题\\",\\"image\\":[\\"\\"],\\"dateModified\\":\\"2026-09-07T16:27:23.000Z\\",\\"author\\":[{\\"@type\\":\\"Person\\",\\"name\\":\\"Hollis\\"}]}"],["meta",{"property":"og:url","content":"https://vuepress-theme-hope-docs-demo.netlify.app/java8gu/50.%E9%A1%B9%E7%9B%AE%E9%9A%BE%E7%82%B9_%E4%BA%AE%E7%82%B9/%E5%9F%BA%E4%BA%8ESpring_Event_%E5%AE%9E%E7%8E%B0%E5%90%8C%E6%AD%A5%E8%BD%AC%E5%BC%82%E6%AD%A5_%E8%A7%A3%E5%86%B3%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%89%AB%E8%A1%A8%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%B8%8D%E5%A4%9F%E7%9A%84%E9%97%AE%E9%A2%98.html"}],["meta",{"property":"og:site_name","content":"Java面试帮助文档"}],["meta",{"property":"og:title","content":"基于Spring_Event,实现同步转异步,解决定时任务扫表导致数据库连接池不够的问题"}],["meta",{"property":"og:description","content":"基于Spring_Event,实现同步转异步,解决定时任务扫表导致数据库连接池不够的问题 警告 内容来源网络，仅供学习使用。 不要相信文档中的链接、联系方式等！！！ 背景 有这样一个业务场景，作为一个金融产品，很多用户会在借款后发生逾期，每一笔逾期都是一笔单独的借据，在贷后催收环节中，需要基于用户维度做聚合，把多笔借据合并成一个案件进行统一的催收。 那..."}],["meta",{"property":"og:type","content":"article"}],["meta",{"property":"og:locale","content":"zh-CN"}],["meta",{"property":"og:updated_time","content":"2026-09-07T16:27:23.000Z"}],["meta",{"property":"article:author","content":"Hollis"}],["meta",{"property":"article:modified_time","content":"2026-09-07T16:27:23.000Z"}]]},"git":{"createdTime":1788798443000,"updatedTime":1788798443000,"contributors":[{"name":"Yinx","username":"Yinx","email":"admin@yinx.eu.cc","commits":1,"url":"https://github.com/Yinx"}]},"readingTime":{"minutes":3.67,"words":1102},"filePathRelative":"java8gu/50.项目难点&亮点/基于Spring_Event,实现同步转异步,解决定时任务扫表导致数据库连接池不够的问题.md","autoDesc":true}`),u={name:`基于Spring_Event,实现同步转异步,解决定时任务扫表导致数据库连接池不够的问题.md`};function d(c,l,u,d,f,p){let m=o(`RouteLink`);return i(),r(`div`,null,[l[4]||=a(`<h1 id="基于spring-event-实现同步转异步-解决定时任务扫表导致数据库连接池不够的问题" tabindex="-1"><a class="header-anchor" href="#基于spring-event-实现同步转异步-解决定时任务扫表导致数据库连接池不够的问题"><span>基于Spring_Event,实现同步转异步,解决定时任务扫表导致数据库连接池不够的问题</span></a></h1><div class="hint-container caution"><p class="hint-container-title">警告</p><p>内容来源网络，仅供学习使用。<br><br><strong>不要相信文档中的链接、联系方式等！！！</strong></p></div><h3 id="背景" tabindex="-1"><a class="header-anchor" href="#背景"><span>背景</span></a></h3><p>有这样一个业务场景，作为一个金融产品，很多用户会在借款后发生逾期，每一笔逾期都是一笔单独的借据，在贷后催收环节中，需要基于用户维度做聚合，把多笔借据合并成一个案件进行统一的催收。</p><p>那么就需要一个把多笔借据合并成一个案件的操作。最开始采用的方案就是定时任务扫表，每天早上凌晨5-8点之间进行定时任务扫表，然后进行案件的合并。</p><p>但是随着业务量的增多，扫表经常会扫不完，于是业务上为了提效，把定时任务改为分布式任务，借助多实例进行批量扫表。</p><p>但是这样做就导致数据库扛不住了，数据库的连接池经常在跑任务的时候被打满。于是就需要想办法解决这个问题。</p><h3 id="技术选型" tabindex="-1"><a class="header-anchor" href="#技术选型"><span>技术选型</span></a></h3><p>关于这个问题，有挺多方案的。</p><p>首先就是可以选择分库分表，把原来的单独分成多个库，这样整体的连接数就多了，也就可以扛得住并发扫表了。但是这个方案比较重，分表后也会带来一系列问题。</p><p>于是考虑了另外一种方案，那就是基于&quot;同步转异步&quot;的思想，在借据生成的时候，就进行合并，而不是定时任务批量合并。</p><p>这样就可以把集中地流量分散到每一条借据生成的过程中，而且这个过程允许失败，一旦失败了，通过定时任务补偿即可。</p><p>但是这么做就会导致借据生成这部分逻辑很复杂，需要考虑到合并案件的事情，耦合性太深了。于是就基于Spring Event，把借据生成和案件合并进行解耦。</p><p>所以，整体方案就是基于Spring Event，实现同步转异步，解决定时任务扫表导致数据库连接池不够的问题。</p><p>在方案改造前，每次扫表需要处理的数据量有20万条，改造后，只需要1000左右的数据量需要扫表处理，大大提升系统的可用性。</p><h3 id="你做了什么" tabindex="-1"><a class="header-anchor" href="#你做了什么"><span>你做了什么</span></a></h3><p>在借据生成的方法中，增加一个事件发送：</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span></span></span>
+<span class="line"><span>protected BaseManageResponse genenrateLoan(LoanGenerateEvent loanGenerateEvent) {</span></span>
+<span class="line"><span>    BaseManageResponse manageResponse = new BaseManageResponse();</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    try {</span></span>
+<span class="line"><span>        //开启事务</span></span>
+<span class="line"><span>        return transactionTemplate.execute(transactionStatus -&gt; {</span></span>
+<span class="line"><span>            </span></span>
+<span class="line"><span>            //核心逻辑执行</span></span>
+<span class="line"><span>            doGenerateLoan(loanGenerateEvent);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>            //发送一个案件入催完成的事件</span></span>
+<span class="line"><span>            try {</span></span>
+<span class="line"><span>                applicationContext.publishEvent(new CaseStartFinishEvent(loanGenerateEven));</span></span>
+<span class="line"><span>            } catch (Exception e) {</span></span>
+<span class="line"><span>                LOG.warn(&quot;publishLoanGenerateEventEvent failed&quot;, e);</span></span>
+<span class="line"><span>            }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>            //结果返回</span></span>
+<span class="line"><span>            return manageResponse.successResponse(caseModel);</span></span>
+<span class="line"><span>        });</span></span>
+<span class="line"><span>    } catch (Exception e) {</span></span>
+<span class="line"><span>        LoanGenerateStream existStream = queryExistStream(request);</span></span>
+<span class="line"><span>        if (existStream != null) {</span></span>
+<span class="line"><span>            return manageResponse.duplicatedResponse(existStream);</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>        throw e;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这里在<code>applicationContext.publishEvent(new CaseStartFinishEvent(caseModel.getCaseItem()));</code>中发送一个事件，并且用try-catch包上，一旦失败了，不影响主流程。</p><p>然后再定义一个监听器，处理这个事件：</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span></span></span>
+<span class="line"><span>/**</span></span>
+<span class="line"><span> * 案件中心内部事件监听器</span></span>
+<span class="line"><span> *</span></span>
+<span class="line"><span> * @author Hollis</span></span>
+<span class="line"><span> */</span></span>
+<span class="line"><span>@Component</span></span>
+<span class="line"><span>public class CollectionCaseEventListener {</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    @Autowired</span></span>
+<span class="line"><span>    private CaseManageService caseManageService;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    @Autowired</span></span>
+<span class="line"><span>    private DistributeLockSupport distributeLockSupport;</span></span>
+<span class="line"><span> </span></span>
+<span class="line"><span>    @EventListener(CaseStartFinishEvent.class)</span></span>
+<span class="line"><span>    @Async(&quot;caseStartFinishExecutor&quot;)</span></span>
+<span class="line"><span>    public void onApplicationEvent(CaseStartFinishEvent event) {</span></span>
+<span class="line"><span>        LoanGenerateEvent loanGenerateEvent = (LoanGenerateEvent) event.getSource();</span></span>
+<span class="line"><span>        //加分布式锁，避免并发情况下导致创建多条案件</span></span>
+<span class="line"><span>        if (!distributeLockSupport.acquireLock(loanGenerateEvent.getUserId(), loanGenerateEvent.getBizId(), 10000)) {</span></span>
+<span class="line"><span>            return;</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>        try {</span></span>
+<span class="line"><span>            CaseMergeEvent mergeEvent = new CaseMergeEvent();</span></span>
+<span class="line"><span>            mergeEvent.setCaseItemId(loanGenerateEvent.getId());</span></span>
+<span class="line"><span>            mergeEvent.setUserId(loanGenerateEvent.getUserId());</span></span>
+<span class="line"><span>            mergeEvent.setUserIdType(loanGenerateEvent.getUserIdType());</span></span>
+<span class="line"><span>            mergeEvent.setIdentifier(UUID.randomUUID().toString());</span></span>
+<span class="line"><span>            mergeEvent.setProduct(loanGenerateEvent.getProduct());</span></span>
+<span class="line"><span>            mergeEvent.setBizId(loanGenerateEvent.getBizId());</span></span>
+<span class="line"><span>            mergeEvent.setBizDate(new Date());</span></span>
+<span class="line"><span>            caseManageService.merge(mergeEvent);</span></span>
+<span class="line"><span>            </span></span>
+<span class="line"><span>        } finally {</span></span>
+<span class="line"><span>            distributeLockSupport.releaseLock(loanGenerateEvent.getUserId(), loanGenerateEvent.getBizId());</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这里主要有一个点需要提一下，就是加了分布式锁，避免并发导致重复。即一锁二查三更新。</p><h3 id="学习资料" tabindex="-1"><a class="header-anchor" href="#学习资料"><span>学习资料</span></a></h3>`,23),s(`p`,null,[e(m,{to:`/java8gu/27.%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%89%AB%E8%A1%A8%E7%9A%84%E6%96%B9%E6%A1%88%E6%9C%89%E4%BB%80%E4%B9%88%E7%BC%BA%E7%82%B9.html`},{default:t(()=>[...l[0]||=[n(`27.定时任务_定时任务扫表的方案有什么缺点`,-1)]]),_:1})]),s(`p`,null,[e(m,{to:`/java8gu/26.%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E5%90%8E%E4%BC%9A%E5%B8%A6%E6%9D%A5%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98.html`},{default:t(()=>[...l[1]||=[n(`26.分库分表_分库分表后会带来哪些问题`,-1)]]),_:1})]),s(`p`,null,[e(m,{to:`/java8gu/06.Spring/%E5%9C%A8Spring%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Spring_Event%E5%81%9A%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8.html`},{default:t(()=>[...l[2]||=[n(`06.Spring_在Spring中如何使用Spring_Event做事件驱动`,-1)]]),_:1})]),s(`p`,null,[e(m,{to:`/java8gu/13.%E5%88%86%E5%B8%83%E5%BC%8F/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E7%9A%84%E9%97%AE%E9%A2%98.html`},{default:t(()=>[...l[3]||=[n(`13.分布式_如何解决接口幂等的问题`,-1)]]),_:1})])])}var f=c(u,[[`render`,d]]);export{l as _pageData,f as default};

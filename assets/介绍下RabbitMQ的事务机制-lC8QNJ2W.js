@@ -1,0 +1,41 @@
+import{a as e,c as t,i as n,n as r,o as i,r as a,s as o,t as s}from"./app-CVL-wmV5.js";import{t as c}from"./plugin-vue_export-helper-BDNMzG2s.js";var l=JSON.parse(`{"path":"/java8gu/18.RabbitMQ/%E4%BB%8B%E7%BB%8D%E4%B8%8BRabbitMQ%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%9C%BA%E5%88%B6.html","title":"介绍下RabbitMQ的事务机制","lang":"zh-CN","frontmatter":{"title":"介绍下RabbitMQ的事务机制","author":"Hollis","category":["Java八股文"],"description":"介绍下RabbitMQ的事务机制 警告 内容来源网络，仅供学习使用。 不要相信文档中的链接、联系方式等！！！ 想要保证发送者一定能把消息发送给RabbitMQ，一种是通过confirm机制，另外一种就是通过事务机制。 RabbitMQ的事务机制，允许生产者将一组操作打包成一个原子事务单元，要么全部执行成功，要么全部失败。事务提供了一种确保消息完整性的方...","head":[["script",{"type":"application/ld+json"},"{\\"@context\\":\\"https://schema.org\\",\\"@type\\":\\"Article\\",\\"headline\\":\\"介绍下RabbitMQ的事务机制\\",\\"image\\":[\\"\\"],\\"dateModified\\":\\"2026-09-07T16:27:23.000Z\\",\\"author\\":[{\\"@type\\":\\"Person\\",\\"name\\":\\"Hollis\\"}]}"],["meta",{"property":"og:url","content":"https://vuepress-theme-hope-docs-demo.netlify.app/java8gu/18.RabbitMQ/%E4%BB%8B%E7%BB%8D%E4%B8%8BRabbitMQ%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%9C%BA%E5%88%B6.html"}],["meta",{"property":"og:site_name","content":"Java面试帮助文档"}],["meta",{"property":"og:title","content":"介绍下RabbitMQ的事务机制"}],["meta",{"property":"og:description","content":"介绍下RabbitMQ的事务机制 警告 内容来源网络，仅供学习使用。 不要相信文档中的链接、联系方式等！！！ 想要保证发送者一定能把消息发送给RabbitMQ，一种是通过confirm机制，另外一种就是通过事务机制。 RabbitMQ的事务机制，允许生产者将一组操作打包成一个原子事务单元，要么全部执行成功，要么全部失败。事务提供了一种确保消息完整性的方..."}],["meta",{"property":"og:type","content":"article"}],["meta",{"property":"og:locale","content":"zh-CN"}],["meta",{"property":"og:updated_time","content":"2026-09-07T16:27:23.000Z"}],["meta",{"property":"article:author","content":"Hollis"}],["meta",{"property":"article:modified_time","content":"2026-09-07T16:27:23.000Z"}]]},"git":{"createdTime":1788798443000,"updatedTime":1788798443000,"contributors":[{"name":"Yinx","username":"Yinx","email":"admin@yinx.eu.cc","commits":1,"url":"https://github.com/Yinx"}]},"readingTime":{"minutes":1.69,"words":506},"filePathRelative":"java8gu/18.RabbitMQ/介绍下RabbitMQ的事务机制.md","autoDesc":true}`),u={name:`介绍下RabbitMQ的事务机制.md`};function d(c,l,u,d,f,p){let m=o(`RouteLink`);return i(),r(`div`,null,[l[1]||=s(`h1`,{id:`介绍下rabbitmq的事务机制`,tabindex:`-1`},[s(`a`,{class:`header-anchor`,href:`#介绍下rabbitmq的事务机制`},[s(`span`,null,`介绍下RabbitMQ的事务机制`)])],-1),l[2]||=s(`div`,{class:`hint-container caution`},[s(`p`,{class:`hint-container-title`},`警告`),s(`p`,null,[n(`内容来源网络，仅供学习使用。`),s(`br`),s(`br`),s(`strong`,null,`不要相信文档中的链接、联系方式等！！！`)])],-1),s(`p`,null,[e(m,{to:`/java8gu/18.RabbitMQ/%E5%A6%82%E4%BD%95%E4%BF%9D%E9%9A%9C%E6%B6%88%E6%81%AF%E4%B8%80%E5%AE%9A%E8%83%BD%E5%8F%91%E9%80%81%E5%88%B0RabbitMQ.html`},{default:t(()=>[...l[0]||=[n(`18.RabbitMQ_如何保障消息一定能发送到RabbitMQ`,-1)]]),_:1})]),l[3]||=a(`<p>想要保证发送者一定能把消息发送给RabbitMQ，一种是通过confirm机制，另外一种就是通过事务机制。</p><p>RabbitMQ的事务机制，允许生产者将一组操作打包成一个原子事务单元，要么全部执行成功，要么全部失败。事务提供了一种确保消息完整性的方法，但需要谨慎使用，因为它们对性能有一定的影响。</p><p>RabbitMQ是基于AMQP协议实现的，RabbitMQ中，事务是通过在通道（Channel）上启用的，与事务机制有关的方法有三个：</p><ul><li>txSelect()：将当前channel设置成transaction模式。</li><li>txCommit()：提交事务。</li><li>txRollback()：回滚事务。</li></ul><p>我们需要先通过txSelect开启事务，然后就可以发布消息给MQ了，如果txCommit提交成功了，则消息一定到达了RabbitMQ，如果在txCommit执行之前RabbitMQ实例异常崩溃或者抛出异常，那我们就可以捕获这个异常然后执行txRollback进行回滚事务。</p><p>所以， 通过事务机制，我们也能保证消息一定可以发送给RabbitMQ。</p><p>以下，是一个通过事务发送消息的方法示例：</p><div class="language-plain line-numbers-mode" data-highlighter="shiki" data-ext="plain" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-plain"><span class="line"><span>import com.rabbitmq.client.*;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>public class RabbitMQTransactionExample {</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    public static void main(String[] args) throws Exception {</span></span>
+<span class="line"><span>        ConnectionFactory factory = new ConnectionFactory();</span></span>
+<span class="line"><span>        factory.setHost(&quot;localhost&quot;);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        try (Connection connection = factory.newConnection();</span></span>
+<span class="line"><span>             Channel channel = connection.createChannel()) {</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>            // 启用事务</span></span>
+<span class="line"><span>            channel.txSelect();</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>            String exchangeName = &quot;my_exchange&quot;;</span></span>
+<span class="line"><span>            String routingKey = &quot;my_routing_key&quot;;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>            try {</span></span>
+<span class="line"><span>                // 发送第一条消息</span></span>
+<span class="line"><span>                String message1 = &quot;Transaction Message 1&quot;;</span></span>
+<span class="line"><span>                channel.basicPublish(exchangeName, routingKey, null, message1.getBytes());</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>                // 发送第二条消息</span></span>
+<span class="line"><span>                String message2 = &quot;Transaction Message 2&quot;;</span></span>
+<span class="line"><span>                channel.basicPublish(exchangeName, routingKey, null, message2.getBytes());</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>                // 模拟一个错误</span></span>
+<span class="line"><span>                int x = 1 / 0;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>                // 提交事务（如果没有发生错误）</span></span>
+<span class="line"><span>                channel.txCommit();</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>                System.out.println(&quot;Transaction committed.&quot;);</span></span>
+<span class="line"><span>            } catch (Exception e) {</span></span>
+<span class="line"><span>                // 发生错误，回滚事务</span></span>
+<span class="line"><span>                channel.txRollback();</span></span>
+<span class="line"><span>                System.err.println(&quot;Transaction rolled back.&quot;);</span></span>
+<span class="line"><span>            }</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,8)])}var f=c(u,[[`render`,d]]);export{l as _pageData,f as default};
