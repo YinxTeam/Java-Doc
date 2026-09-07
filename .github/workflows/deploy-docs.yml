@@ -1,9 +1,5 @@
-
 name: 部署文档
 
-env:
-  NODE_OPTIONS: --max-old-space-size=8192
-  
 on:
   push:
     branches:
@@ -20,15 +16,11 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          
-          # 如果你文档需要 Git 子模块，取消注释下一行
-          # submodules: true
 
       - name: 设置 pnpm
         uses: pnpm/action-setup@v6
         with:
           version: 11
-
 
       - name: 设置 Node.js
         uses: actions/setup-node@v6
@@ -43,14 +35,15 @@ jobs:
 
       - name: 构建文档
         env:
-          NODE_OPTIONS: --max_old_space_size=4096
-        run: |-
+          # ✅ 修复1: 统一使用 8192，删除冲突的 4096
+          # ✅ 修复2: 使用连字符格式 max-old-space-size（下划线格式在某些 Node 版本中不生效）
+          NODE_OPTIONS: --max-old-space-size=8192
+        run: |
           pnpm run docs:build
-          > src\.vuepress\dist\.nojekyll
+          touch src/.vuepress/dist/.nojekyll
 
       - name: 部署文档
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          # 部署文档
           branch: gh-pages
-          folder: src\.vuepress\dist
+          folder: src/.vuepress/dist
