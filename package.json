@@ -21,6 +21,5 @@
     "onlyBuiltDependencies": [
       "esbuild"
     ]
-  },
-  "packageManager": "pnpm@11.7.0"
+  }
 }

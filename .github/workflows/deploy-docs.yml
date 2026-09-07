@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          version: 11
+          
           # 如果你文档需要 Git 子模块，取消注释下一行
           # submodules: true
 
