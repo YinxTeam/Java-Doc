@@ -1,6 +1,9 @@
 
 name: 部署文档
 
+env:
+  NODE_OPTIONS: --max-old-space-size=8192
+  
 on:
   push:
     branches:
