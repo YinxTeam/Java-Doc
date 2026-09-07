@@ -1,0 +1,28 @@
+---
+title: "哪些语言有GC机制"
+author: Hollis
+category:
+  - Java八股文
+---
+
+# 哪些语言有GC机制
+
+::: caution
+内容来源网络，仅供学习使用。<br/>
+**不要相信文档中的链接、联系方式等！！！**
+:::
+
+很多编程语言都有垃圾回收（GC）机制，其中包括：
+
+1.  Java
+2.  C#
+3.  Python
+4.  Ruby
+5.  JavaScript
+6.  Kotlin
+7.  Swift
+8.  Go
+9.  R
+10.  Lua
+
+这些语言的 GC 机制都是在运行时自动管理内存，以防止内存泄漏和数据丢失。
