@@ -16,11 +16,11 @@ category:
 
 Spring中：
 
-![image.png](./assets/✅为什么logger.warn()之前要使用logger.isWarnEnabled()_-1.png)
+![image.png](./assets/为什么logger.warn()之前要使用logger.isWarnEnabled()_-1.png)
 
 Dubbo中：
 
-![image.png](./assets/✅为什么logger.warn()之前要使用logger.isWarnEnabled()_-2.png)
+![image.png](./assets/为什么logger.warn()之前要使用logger.isWarnEnabled()_-2.png)
 
 也就是说，很多框架，在执行warn()、debug()等方法前，都会额外的调用一下isWarnEnabled()和isDebugEnabled()等方法，这是为什么呢？
 

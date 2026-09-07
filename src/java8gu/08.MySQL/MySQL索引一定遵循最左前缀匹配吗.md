@@ -44,7 +44,7 @@ INSERT INTO t1 SELECT f1, f2 + 40 FROM t1;
 
 分别在MySQL 5.7.9和MySQL 8.0.30上执行`EXPLAIN SELECT f1, f2 FROM t1 WHERE f2 = 40;`
 
-![](https://www.hollischuang.com/wp-content/uploads/2022/12/16701385370311.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_35%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/16701385370311.jpg)
 
 可以看到，主要有以下几个区别：
 

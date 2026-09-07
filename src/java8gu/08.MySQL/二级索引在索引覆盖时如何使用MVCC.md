@@ -34,7 +34,7 @@ category:
 
 这个问题挺有意思的，确实，在你懂了以上几个知识点之后，可能就会陷入这个疑惑当中，那么具体是怎么回事呢？我在MySQL 官网中（[https://dev.mysql.com/doc/refman/8.4/en/optimizing-innodb-transaction-management.html](https://dev.mysql.com/doc/refman/8.4/en/optimizing-innodb-transaction-management.html) ），到了一个以下关于这个问题的描述：
 
-![](https://www.hollischuang.com/wp-content/uploads/2024/08/17229262951707.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_68%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/17229262951707.jpg)
 
 翻译一下就是：**如果发现二级索引页有一个 PAGE\_MAX\_TRX\_ID 太新的，或者如果二级索引中的记录被删除标记， InnoDB可能需要使用聚集索引来查找记录。**
 

@@ -50,7 +50,7 @@ logback当前分成三个模块：logback-core,logback- classic和logback-access
 
 不知道有多少人看过《阿里巴巴Java开发手册》，其中有一条规范做了『强制』要求：
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/11/15430457243811.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_53%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15430457243811.jpg)​
 
 说好了以上四种常用的日志框架是给Java应用提供的方便进行记录日志的，那为什么又不让在应用中直接使用其API呢？这里面推崇使用的SLF4J是什么呢？所谓的门面模式又是什么东西呢？
 
@@ -60,7 +60,7 @@ logback当前分成三个模块：logback-core,logback- classic和logback-access
 
 门面模式（Facade Pattern），也称之为外观模式，其核心为：外部与一个子系统的通信必须通过一个统一的外观对象进行，使得子系统更易于使用。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/11/15430470508468.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_16%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15430470508468.png)​
 
 就像前面介绍的几种日志框架一样，每一种日志框架都有自己单独的API，要使用对应的框架就要使用其对应的API，这就大大的增加应用程序代码对于日志框架的耦合性。
 

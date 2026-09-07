@@ -16,17 +16,17 @@ category:
 
 最近，经常收到一些数据库的报警，提示我们的数据库的CPU有异常飙高的情况，通过该监控发现，确实间歇性的有一些CPU飙高的情况，经常把CPU打满了。
 
-![](https://ata2-img.oss-cn-zhangjiakou.aliyuncs.com/neweditor/a1786489-1f44-4c39-bea4-85ca25a45433.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_45%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/a1786489-1f44-4c39-bea4-85ca25a45433.png)
 
 ### 问题排查
 
 通过监控进一步查看，发现在CPU飙高的同时，有大量SQL的锁耗时比较长，平均在1.5秒左右，并且在业务高峰期经常要4s-5s：
 
-![](https://ata2-img.oss-cn-zhangjiakou.aliyuncs.com/neweditor/1737f072-f8e8-41d6-b209-79ef04365fd5.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_87%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/1737f072-f8e8-41d6-b209-79ef04365fd5.png)
 
 具体查看SQL的话，会发现是一些update语句导致的：
 
-![](https://ata2-img.oss-cn-zhangjiakou.aliyuncs.com/neweditor/5d61c70f-5dce-4717-bd57-6a14039bf708.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_95%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/5d61c70f-5dce-4717-bd57-6a14039bf708.png)
 
 主要的SQL内容在下面，其中我们的更新条件，number是有唯一性索引的：
 
@@ -111,4 +111,4 @@ public class AuditOrder{
 
 经过以上代码优化后，不仅CPU飙高的问题解决了，合案任务的执行效率也大大提高了。原来需要跑2小时，现在只需要10分钟不到。
 
-![](https://ata2-img.oss-cn-zhangjiakou.aliyuncs.com/neweditor/910de110-f45d-412b-88df-179309bf24f3.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_46%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/910de110-f45d-412b-88df-179309bf24f3.png)

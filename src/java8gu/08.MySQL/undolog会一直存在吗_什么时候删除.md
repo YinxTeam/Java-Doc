@@ -30,7 +30,7 @@ update undolog：用于记录update和delete操作，不仅在事务回滚时需
 
 在mysql官网中（[https://dev.mysql.com/doc/refman/8.4/en/optimizing-innodb-transaction-management.html](https://dev.mysql.com/doc/refman/8.4/en/optimizing-innodb-transaction-management.html) ）是这么描述的：
 
-![](https://www.hollischuang.com/wp-content/uploads/2024/08/17229269572106.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_34%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/17229269572106.jpg)
 
 > 当行被update或delete时，行和关联的undolog不会立即物理删除，甚至不会在事务提交后立即删除。旧数据会一直保留到较早开始或同时开始的事务完成，以便这些事务可以访问修改或删除行的先前状态。因此，长时间运行的事务可以防止InnoDB清除由不同事务更改的数据。
 
@@ -44,6 +44,6 @@ InnoDB会在合适的时间进行统一清理，释放空间。这个过程称�
 
 当一个读事务开始时，它会创建一个读取视图（ReadView）。这个读取视图会记录当前看到的最大的事务提交序号，称为m\_low\_limit\_no。这是这个读事务开始时数据库中已经提交的最大事务编号。
 
-![](https://www.hollischuang.com/wp-content/uploads/2024/08/17229252330219.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_30%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/17229252330219.jpg)
 
 如果某个事务的编号（trx\_no）小于所有活跃读事务的m\_low\_limit\_no，说明这个事务在所有读事务开始之前就已经提交了。这意味着所有活跃的读事务都可以看到这个事务的结果，不需要再通过Undo Log来构建数据的历史版本。因此，这些Undo Log可以被清理。

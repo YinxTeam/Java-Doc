@@ -44,7 +44,7 @@ JMM是一种规范，目的是解决由于多线程通过共享内存进行通�
 
 在CPU和主存之间增加缓存，在多线程场景下就可能存在**缓存一致性问题**，也就是说，在多核CPU中，每个核的自己的缓存中，关于同一个数据的缓存内容可能不一致。
 
-![image.png](./assets/✅什么是Java内存模型(JMM)_-1.png)
+![image.png](./assets/什么是Java内存模型(JMM)_-1.png)
 
 ### CPU时间片与原子性问题
 
@@ -72,7 +72,7 @@ JMM是一种规范，目的是解决由于多线程通过共享内存进行通�
 
 比如经典的 `i++` 操作，对于一个简单的`i++`操作，一共有三个步骤：`load` , `add` ,`save` 。共享变量就会被多个线程同时进行操作，这样读改写操作就不是原子的，操作完之后共享变量的值会和期望的不一致，举个例子：如果i=1,我们进行两次`i++`操作，我们期望的结果是3，但是有可能结果是2。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/07/111.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_22%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/111.png)
 
 #### 并发中的原子性和数据库中的原子性
 
@@ -90,7 +90,7 @@ JMM是一种规范，目的是解决由于多线程通过共享内存进行通�
 
 还是刚刚的`i++`操作，在满足了原子性的情况下，如果没有满足有序性，那么得到的结果可能也不是我们想要的。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/07/222.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_21%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/222.png)
 
 ## 计算机内存模型
 

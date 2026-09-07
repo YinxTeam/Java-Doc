@@ -166,4 +166,4 @@ Spring的@Transactional事务的核心原理可以概括为 “通过 AOP（面�
 
 关于@Transactional的用法，规约中也有提到过，只不过规约中的观点没有我这么鲜明：
 
-![](http://www.hollischuang.com/wp-content/uploads/2020/10/Jietu20201011-171246.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_46%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/Jietu20201011-171246.jpg)

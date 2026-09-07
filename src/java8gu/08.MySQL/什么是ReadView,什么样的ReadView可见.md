@@ -30,13 +30,11 @@ ReadView的定义在MySQL的不同版本中不一样，拿MySQL 5.7 （8.0也一
 
 （[https://github.com/xiaowei520/mysql-5.7.23-source-read/blob/0d99c6709f1d982aa8674dab3fc40848908478fb/storage/innobase/read/read0read.cc#L175](https://github.com/xiaowei520/mysql-5.7.23-source-read/blob/0d99c6709f1d982aa8674dab3fc40848908478fb/storage/innobase/read/read0read.cc#L175) ）：
 
-![](./media/17228420264489/17228451418493.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_9%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
-
 ![image.png](./assets/什么是ReadView,什么样的ReadView可见_-1.png)
 
 这几个东西是干嘛的，有啥用，代表了啥？其实，在5.6（[https://github.com/zhujzhuo/MySQL-5.6/blob/mysql-5.6.11/storage/innobase/include/read0read.h](https://github.com/zhujzhuo/MySQL-5.6/blob/mysql-5.6.11/storage/innobase/include/read0read.h) ） 中的ReadView的定义更加直观：
 
-![](./media/17228420264489/17228452524443.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_9%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)![image.png](./assets/什么是ReadView,什么样的ReadView可见_-2.png)
+![image.png](./assets/什么是ReadView,什么样的ReadView可见_-2.png)
 
 也就是说，在 Read View 中有几个重要的属性：
 

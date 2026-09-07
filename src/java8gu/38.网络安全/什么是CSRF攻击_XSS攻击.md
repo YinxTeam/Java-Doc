@@ -18,7 +18,7 @@ category:
 
 你这可以这么理解CSRF攻击：攻击者盗用了你的身份，以你的名义发送恶意请求。CSRF能够做的事情包括：以你名义发送邮件，发消息，盗取你的账号，甚至于购买商品，虚拟货币转账......造成的问题包括：个人隐私泄露以及财产安全。
 
-![](http://www.hollischuang.com/wp-content/uploads/2015/04/csrf-attack-1.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_34%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/csrf-attack-1.png)
 
 从上图可以看出，要完成一次CSRF攻击，受害者必须依次完成两个步骤：
 

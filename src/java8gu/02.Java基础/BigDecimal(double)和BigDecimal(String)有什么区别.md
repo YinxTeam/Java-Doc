@@ -28,7 +28,7 @@ category:
 
 在《阿里巴巴Java开发手册》中有一条建议，或者说是要求：
 
-![](http://www.hollischuang.com/wp-content/uploads/2021/01/16119907257353.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_41%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/16119907257353.jpg)​
 
 ### BigDecimal如何精确计数？
 
@@ -109,7 +109,7 @@ BigDecimal中提供了一个通过double创建BigDecimal的方法——BigDecima
 
 而是0.1000000000000000055511151231257827021181583404541015625。这是因为double自身表示的只是一个近似值。
 
-![](http://www.hollischuang.com/wp-content/uploads/2021/01/16119945021181.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_31%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/16119945021181.jpg)​
 
 **所以，如果我们在代码中，使用BigDecimal(double) 来创建一个BigDecimal的话，那么是损失了精度的，这是极其严重的。**
 

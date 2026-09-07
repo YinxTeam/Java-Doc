@@ -24,7 +24,7 @@ HTTP/2主要是解决HTTP中存在的效率问题。它主要引入了二进制�
 
 HTTP 协议是以 ASCII 码传输，基于请求与响应模式的、无状态的，建立在 TCP/IP 协议之上的应用层规范。。它不涉及数据包（packet）传输，主要规定了客户端和服务器之间的通信格式，默认使用80端口。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/03/http.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_13%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/http.jpg)
 
 HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2。HTTPS是另外一个协议，简单讲是HTTP的安全版。
 
@@ -40,7 +40,7 @@ HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2。HTTPS
 
 为了解决HTTP/1.0存在的缺陷，HTTP/1.1于1999年诞生。相比较于HTTP/1.0来说，最主要的改进就是引入了持久连接。所谓的持久连接就是：在一个TCP连接上可以传送多个HTTP请求和响应，减少了建立和关闭连接的消耗和延迟。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/03/1.0-1.1.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_13%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/1.0-1.1.png)
 
 引入了持久连接之后，在性能方面，HTTP协议有了明显的提升，基本可以用于日常使用，这也是这一版本一直延用至今的原因。当然还是有些力不从心的，后面会详细介绍。
 
@@ -58,7 +58,7 @@ HTTP协议主要的版本有3个，分别是HTTP/1.0、HTTP/1.1和HTTP/2。HTTPS
 
 SPDY位于HTTP之下，TCP和SSL之上，这样可以轻松兼容老版本的HTTP协议。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/03/spdy.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_22%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/spdy.png)
 
 实际上在 HTTP2 提出来之前，SPDY 流行了很长一段时间。当下很多著名的互联网公司都在自己的网站或 APP 中采用了 SPDY 系列协议（当前最新版本是 SPDY/3.1），因为它对性能的提升是显而易见的。主流的浏览器（谷歌、火狐、Opera）也都早已经支持 SPDY，它已经成为了工业标准。HTTP Working-Group 最终决定以 SPDY/2 为基础，开发 HTTP/2。
 
@@ -66,7 +66,7 @@ SPDY位于HTTP之下，TCP和SSL之上，这样可以轻松兼容老版本的HTT
 
 下图是Akamai 公司建立的一个官方的演示，主要用来说明在性能上HTTP/1.1和HTTP/2在性能升的差别。同时请求 379 张图片，HTTP/1.1加载用时4.54s，HTTP/2加载用时1.47s。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/03/http21.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_26%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/http21.png)
 
 HTTP/2 是 HTTP 协议自 1999 年 HTTP 1.1 发布后的首个更新，主要基于 SPDY 协议。由互联网工程任务组（IETF）的 Hypertext Transfer Protocol Bis（httpbis）工作小组进行开发。该组织于2014年12月将HTTP/2标准提议递交至IESG进行讨论，于2015年2月17日被批准。HTTP/2标准于2015年5月以RFC 7540正式发表。
 
@@ -76,7 +76,7 @@ HTTP/2 是 HTTP 协议自 1999 年 HTTP 1.1 发布后的首个更新，主要基
 
 在HTTP/2中，在应用层（HTTP2.0）和传输层（TCP或者UDP）之间加了一层：二进制分帧层。这是HTTP2中最大的改变。HTTP2之所以性能会比HTTP1.1有那么大的提高，很大程度上正是由于这一层的引入。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/03/frame-layer.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_15%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/frame-layer.png)
 
 在二进制分帧层中， HTTP/2 会将所有传输的信息分割为更小的消息和帧（frame）,并对它们采用二进制格式的编码。
 
@@ -86,11 +86,11 @@ HTTP/2 是 HTTP 协议自 1999 年 HTTP 1.1 发布后的首个更新，主要基
 
 多路复用允许同时通过单一的HTTP/2.0连接发起多重的请求-响应消息。在HTTP1.1协议中，浏览器客户端在同一时间，针对同一域名下的请求有一定数量的限制，超过了这个限制的请求就会被阻塞。而多路复用允许同时通过单一的 HTTP2.0 连接发起多重的“请求-响应”消息。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/03/IMG_1960.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_31%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/IMG_1960.png)
 
 HTTP2的请求的TCP的connection一旦建立，后续请求以stream的方式发送。每个stream的基本组成单位是frame（二进制帧）。客户端和服务器可以把 HTTP 消息分解为互不依赖的帧，然后乱序发送，最后再在另一端把它们重新组合起来。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/03/multi.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_18%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/multi.png)
 
 也就是说， HTTP2.0 通信都在一个连接上完成，这个连接可以承载任意数量的双向数据流。就好比，我请求一个页面 [http://www.hollischuang.com](http://www.hollischuang.com) 。页面上所有的资源请求都是客户端与服务器上的一条 TCP 上请求和响应的！
 
@@ -98,13 +98,13 @@ HTTP2的请求的TCP的connection一旦建立，后续请求以stream的方式�
 
 HTTP/1.1的header带有大量信息，而且每次都要重复发送。HTTP/2 为了减少这部分开销，采用了HPACK 头部压缩算法对Header进行压缩。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/03/header.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_22%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/header.png)
 
 ### 服务端推送
 
 简单来讲就是当用户的浏览器和服务器在建立连接后，服务器主动将一些资源推送给浏览器并缓存起来的机制。有了缓存，当浏览器想要访问已缓存的资源的时候就可以直接从缓存中读取了。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/03/push.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_15%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/push.png)
 
 ## HTTP队头阻塞
 

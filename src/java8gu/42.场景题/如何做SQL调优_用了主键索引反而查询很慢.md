@@ -16,7 +16,7 @@ category:
 
 线上定时任务执行失败，排查日志发现有慢SQL，分页扫表扫不动了。
 
-![](./media/17054563667330/17054564933625.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_9%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)![image.png](./assets/如何做SQL调优_用了主键索引反而查询很慢_-1.png)
+![image.png](./assets/如何做SQL调优_用了主键索引反而查询很慢_-1.png)
 
 具体SQL如下：
 

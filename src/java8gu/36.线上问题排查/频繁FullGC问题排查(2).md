@@ -16,13 +16,13 @@ category:
 
 线上兼容系统报警，提示有频繁的FullGC以及GC耗时问题比较严重。
 
-![image.png](./assets/✅频繁FullGC问题排查(2)-1.png)
+![image.png](./assets/频繁FullGC问题排查(2)-1.png)
 
 ### 问题定位
 
 在收到FullGC报警之后，登录到内部的监控系统，看一下集群整体的GC情况（如果没有这样的监控系统，可以去机器上查看GC日志）：
 
-![image.png](./assets/✅频繁FullGC问题排查(2)-2.png)
+![image.png](./assets/频繁FullGC问题排查(2)-2.png)
 
 可以看到，集群的GC次数是3小时内有十几次了，那么去看一下单机的情况。
 
@@ -40,11 +40,11 @@ category:
 
 首先是有大对象占了2个多G的内存。
 
-![image.png](./assets/✅频繁FullGC问题排查(2)-3.png)
+![image.png](./assets/频繁FullGC问题排查(2)-3.png)
 
 然后再进一步查看大对象内容：
 
-![image.png](./assets/✅频繁FullGC问题排查(2)-4.png)
+![image.png](./assets/频繁FullGC问题排查(2)-4.png)
 
 发现有一个ArrayList中存放了60多万个CollectionCaseDO对象。
 
@@ -60,27 +60,27 @@ category:
 
 然后我又想到，线上不是所有机器都有这个现象，只有部分机器，并且通过监控发现，出问题的机器堆内存是逐步增长起来的：
 
-![image.png](./assets/✅频繁FullGC问题排查(2)-5.png)
+![image.png](./assets/频繁FullGC问题排查(2)-5.png)
 
 于是，根据问题发生的时间点，去查日志。
 
 在查日志的之前，我根据上面的情况，以及dump的信息，进一步定位到这个问题应该和我们的一个查询接口有关。
 
-![image.png](./assets/✅频繁FullGC问题排查(2)-6.png)
+![image.png](./assets/频繁FullGC问题排查(2)-6.png)
 
 于是通过这个接口的关键日志进行查询，还真的让我查到了端倪。
 
-![image.png](./assets/✅频繁FullGC问题排查(2)-7.png)
+![image.png](./assets/频繁FullGC问题排查(2)-7.png)
 
 在内存两次增长的时间点，刚好有两条特殊的日志。
 
 正常的查询，参数中是要带一个查询的id或者当前的坐席的，如：
 
-![image.png](./assets/✅频繁FullGC问题排查(2)-8.png)
+![image.png](./assets/频繁FullGC问题排查(2)-8.png)
 
 但是上面的问题查询没有带这个ID，那么看了一下代码，这是一个根据ID查询详情的接口，但是发现同事的代码中并没有对这个caseId做非空校验，然后在用户未传递caseId的时候，用了个queryList，就会把所有的案件都查出来放到List中。。。。
 
-![image.png](./assets/✅频繁FullGC问题排查(2)-9.png)
+![image.png](./assets/频繁FullGC问题排查(2)-9.png)
 
 截止到这里，后端的问题基本上定位到了，因为没有传ID，并没有做校验，导致一次查询把所有数据都查出来，放到了List中，然后导致大对象被放到老年代占用了大量空间，因为有多次查询，导致FullGC多次。
 

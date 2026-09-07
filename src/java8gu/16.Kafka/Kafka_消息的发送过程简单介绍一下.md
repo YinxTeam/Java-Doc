@@ -20,7 +20,7 @@ category:
 
 不管是同步发送还是异步发送，最终都需要在Producer端把消息发送到Broker中，那么这个过程大致如下：
 
-![image.png](./assets/Kafka_消息的发送过程简单介绍一下_-1.png)![](./media/16843057638079/16843120535902.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_9%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![image.png](./assets/Kafka_消息的发送过程简单介绍一下_-1.png)
 
 Kafka 的 Producer 在发送消息时通常涉及两个线程，**主线程（Main）和发送线程（Sender）和一个消息累加器（RecordAccumulator）**
 

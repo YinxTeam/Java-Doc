@@ -22,7 +22,7 @@ ExecutorService executor = Executors.newFixedThreadPool(nThreads) ;
 
 但是为什么在阿里巴巴Java开发手册中也明确指出，不允许使用Executors创建线程池呢
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/10/15406254121131.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_67%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/15406254121131.jpg)
 
 ### Executors存在什么问题
 

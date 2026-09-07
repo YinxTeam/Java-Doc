@@ -58,13 +58,13 @@ RAP是阿里团队出的一款接口管理工具，能给你提供方便的接�
 
 现在该项目已暂停维护，但是官方团队推出了RAP2，RAP2 是在 RAP1 基础上重做的新项目，项目地址：[https://github.com/thx/rap2-delos](https://github.com/thx/rap2-delos)
 
-![](http://www.hollischuang.com/wp-content/uploads/2020/12/16078497879943.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_62%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/16078497879943.jpg)​
 
 #### YApi
 
 YApi是去哪儿网移动架构组开发的一个开源项目，旨在为开发、产品、测试人员提供更优雅的接口管理服务。可以帮助开发者轻松创建、发布、维护 API。官网地址：[https://hellosean1025.github.io/yapi/](https://hellosean1025.github.io/yapi/)
 
-![](http://www.hollischuang.com/wp-content/uploads/2020/12/16078499594983.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_61%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/16078499594983.jpg)​
 
 #### Moco
 
@@ -74,4 +74,4 @@ Moco 是一个搭建模拟服务器的工具，其支持 API 和独立运行两�
 
 DOClever是一个可视化免费开源的接口管理工具 ,可以分析接口结构，校验接口正确性， 围绕接口定义文档，通过一系列自动化工具提升我们的协作效率。主要提供接口信息管理、接口调试运行、接口Mock、自动化测试、团队协作等功能。官网地址：[http://doclever.cn/controller/index/index.html](http://doclever.cn/controller/index/index.html)
 
-![](http://www.hollischuang.com/wp-content/uploads/2020/12/16078500933599-scaled.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_73%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/16078500933599-scaled.jpg)

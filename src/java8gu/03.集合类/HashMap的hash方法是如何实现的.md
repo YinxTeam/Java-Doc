@@ -74,7 +74,7 @@ static final int hash(Object key) {
 > 
 > 10 % 8 = 2 ，10 & 7 = 2
 
-​![](http://www.hollischuang.com/wp-content/uploads/2018/03/640-1.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_12%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+​![](./assets/640-1.png)
 
 所以，`return h & (length-1);`只要保证length的长度是`2^n`的话，就可以实现取模运算了。而HashMap中的length也确实是2的幂，初始值是16，之后每次扩充为原来的2倍。
 
@@ -92,7 +92,7 @@ static final int hash(Object key) {
 
 比如：`CA11 0000`和`0001 0000`在对`0000 1111`进行按位与运算后的值是相等的。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/03/640-2.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_12%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/640-2.png)​
 
 两个不同的键值，在对数组长度进行按位与运算后得到的结果相同，这不就发生了冲突吗。那么如何解决这种冲突呢，来看下Java是如何做的。
 
@@ -108,12 +108,12 @@ return h ^ (h >>> 7) ^ (h >>> 4);
 
 举个例子来说，我们现在想向一个HashMap中put一个K-V对，Key的值为“hollischuang”，经过简单的获取hashcode后，得到的值为“1011000110101110011111010011011”，如果当前HashTable的大小为16，即在不进行扰动计算的情况下，他最终得到的index结果值为11。由于15的二进制扩展到32位为“00000000000000000000000000001111”，所以，一个数字在和他进行按位与操作的时候，前28位无论是什么，计算结果都一样（因为0和任何数做与，结果都为0）。如下图所示。
 
-​![](http://www.hollischuang.com/wp-content/uploads/2018/03/640-3.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_17%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+​![](./assets/640-3.png)
 
 可以看到，后面的两个hashcode经过位运算之后得到的值也是11 ，虽然我们不知道哪个key的hashcode是上面例子中的那两个，但是肯定存在这样的key，这就产生了冲突。
 
 那么，接下来，我看看一下经过扰动的算法最终的计算结果会如何。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/03/640-4.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_24%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/640-4.png)​
 
 从上面图中可以看到，之前会产生冲突的两个hashcode，经过扰动计算之后，最终得到的index的值不一样了，这就很好的避免了冲突。

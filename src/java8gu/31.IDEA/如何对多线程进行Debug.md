@@ -52,11 +52,11 @@ class MyThread implements Runnable {
 我们尝试在代码中设置断点，并使用debug模式启动。
 ```
 
-![](http://www.hollischuang.com/wp-content/uploads/2020/11/16065562943648.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_31%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/16065562943648.jpg)​
 
 如题，程序启动后，会进入一个线程的断点中，我们尝试看一下当前是哪个线程：
 
-![](http://www.hollischuang.com/wp-content/uploads/2020/11/16065563249582.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_16%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/16065563249582.jpg)​
 
 发现是thread 1进入了断点。接着，我们尝试让代码继续执行，代码就直接结束运行，并且控制台打印如下：
 
@@ -78,6 +78,6 @@ Process finished with exit code 0
 
 其实，在IDEA中有一个设置，那就是当我们在断点处单击鼠标右键就会弹出一个设置对话框，当我们把其中的All 修改为 Thread之后，尝试重新执行debug代码。
 
-![](http://www.hollischuang.com/wp-content/uploads/2020/11/16065565440571.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_17%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/16065565440571.jpg)​
 
 重新执行之后，就可以发现，每一个线程都会进入到断点当中了。

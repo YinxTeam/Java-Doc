@@ -22,7 +22,7 @@ category:
 
 关于COUNT函数，在MySQL官网中有详细介绍：
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/10/15709530990912.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_34%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15709530990912.jpg)​
 
 简单翻译一下：
 

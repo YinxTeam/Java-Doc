@@ -42,7 +42,7 @@ category:
 
 **JDK 21引入的虚拟线程，是JDK 实现的轻量级线程，他可以避免上下文切换带来的额外耗费。**他的实现原理其实是JDK不再是每一个线程都一对一的对应一个操作系统的线程了，而是会将多个虚拟线程映射到少量操作系统线程中，通过有效的调度来避免那些上下文切换。
 
-![](http://www.hollischuang.com/wp-content/uploads/2022/10/Java-Virtual-Threads-768x326-1.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_22%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/Java-Virtual-Threads-768x326-1.jpg)
 
 而且，我们可以在应用程序中创建非常多的虚拟线程，而不依赖于平台线程的数量。这些虚拟线程是由JVM管理的，因此它们不会增加额外的上下文切换开销，因为它们作为普通Java对象存储在RAM中。
 

@@ -53,14 +53,14 @@ varchar在实际存储时只用实际字符长度 + 长度信息字节，不像 
 
 我看到有人提到过， 说varchar的长度会影响索引树的建立，说什么“`~~VARCHAR(100)~~` ~~的索引页能存的索引项比~~ `~~VARCHAR(10)~~` ~~少~~ ”甚至ChatGPT也是这么说的:
 
-![image.png](./assets/✅varchar(100)和varchar(10)有什么区别_-1.png)
+![image.png](./assets/varchar(100)和varchar(10)有什么区别_-1.png)
 
 (注意：错误信息，不要信）
 
-![image.png](./assets/✅varchar(100)和varchar(10)有什么区别_-2.png)(注意：错误信息，不要信）
+![image.png](./assets/varchar(100)和varchar(10)有什么区别_-2.png)(注意：错误信息，不要信）
 
 其实，在 InnoDB 存储引擎中，索引并不是按照字段定义的最大长度（如 `VARCHAR(100)`）来分配固定空间的。InnoDB 采用了更高效的变长存储方式。也就是说在存储 `**VARCHAR**`、`**VARBINARY**`、`**TEXT**`、`**BLOB**` 等**变长字段**时，**只存储实际数据的字节长度**，而非按定义的最大长度预留空间。
 
 大家可以看下这个文档（[https://smartkeyerror.oss-cn-shenzhen.aliyuncs.com/Psyduck/MySQL/InnoDB-Page.pdf](https://smartkeyerror.oss-cn-shenzhen.aliyuncs.com/Psyduck/MySQL/InnoDB-Page.pdf)），其中有一个例子，就说明了在Innodb的数据中，User Records部分存储的是实际存储的字符长度。
 
-![image.png](./assets/✅varchar(100)和varchar(10)有什么区别_-3.png)
+![image.png](./assets/varchar(100)和varchar(10)有什么区别_-3.png)

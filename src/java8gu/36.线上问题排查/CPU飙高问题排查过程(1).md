@@ -22,7 +22,7 @@ category:
 
 所以，为了评估水位，我们进行了一次压测。压测在预发布环境执行。压测过程中发现，当单机QPS达到200左右时，接口的rt没有明显变化，但是CPU利用率急剧升高，直到被打满。
 
-![](http://www.hollischuang.com/wp-content/uploads/2021/03/16165515783925-scaled.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_73%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/16165515783925-scaled.jpg)
 
 压测停止后，CPU利用率立刻降了下来。
 
@@ -68,7 +68,7 @@ curl -L https://arthas.aliyun.com/install.sh | sh
 
 使用Arthas命令"thread -n 3 -i 1000"查看当前"最忙"（耗CPU）的三个线程：
 
-![](http://www.hollischuang.com/wp-content/uploads/2021/03/16165659820207.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_65%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/16165659820207.jpg)
 
 通过上面的堆栈信息，可以看出，占用CPU资源的线程主要是卡在JDBC底层的TCP套接字读取上。连续执行了很多次，发现很多线程都是卡在这个地方。
 
@@ -133,15 +133,15 @@ public abstract class BaseMybatisDAO implements InitializingBean {
 
 改完以上代码，提交进行验证。通过监控数据可以看出优化后，数据库的读RT有明显下降：
 
-![](http://www.hollischuang.com/wp-content/uploads/2021/03/16165777571485.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_21%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/16165777571485.jpg)
 
 sequence的写操作QPS也有明显下降：
 
-![](http://www.hollischuang.com/wp-content/uploads/2021/03/16165777883205.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_22%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/16165777883205.jpg)
 
 于是我们开始了新的一轮压测，但是发现，CPU的使用率还是很高，压测的QPS还是上不去，于是重新使用Arthas查看线程的情况。
 
-![](http://www.hollischuang.com/wp-content/uploads/2021/03/16165667534840.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_29%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/16165667534840.jpg)
 
 发现了一个新的比较耗费CPU的线程的堆栈，这里面主要是因为我们用到了一个联调工具，该工具预发布默认开启了TDDL的采集（官方文档中描述为预发布默认不开启TDDL采集，但是实际上会采集）。
 

@@ -22,7 +22,7 @@ Java是一种面向对象的语言，而Java对象在JVM中的存储也是有一
 
 那么不管怎么样，一次new的过程，都会在堆上创建一个对象，那么就是起码有一个对象了。至于另外一个对象，到底有没有要看具体情况了。
 
-![](./assets/✅String_str=new_String(_hollis_)创建了几个对象_-1.png)
+![](./assets/String_str=new_String(_hollis_)创建了几个对象_-1.png)
 
 另外这一个对象就是常量池中的字符串常量，这个字符串其实是类编译阶段就进到Class常量池的，然后在运行期，字符串常量在第一次被调用(准确的说是ldc指令)的时候，进行解析并在字符串池中创建对应的String实例的。
 
@@ -36,11 +36,11 @@ Java是一种面向对象的语言，而Java对象在JVM中的存储也是有一
 
 **所以，如果是第一次执行，那么就是会同时创建两个对象。一个字符串常量引用指向的对象，一个我们new出来的对象。**
 
-![](./assets/✅String_str=new_String(_hollis_)创建了几个对象_-2.png)
+![](./assets/String_str=new_String(_hollis_)创建了几个对象_-2.png)
 
 **如果不是第一次执行，那么就只会创建我们自己new出来的对象。**
 
-![](./assets/✅String_str=new_String(_hollis_)创建了几个对象_-3.png)
+![](./assets/String_str=new_String(_hollis_)创建了几个对象_-3.png)
 
 至于有人说什么在字符串池内还有在栈上还有一个引用对象，你听听这说法，引用就是引用。别往对象上面扯。
 

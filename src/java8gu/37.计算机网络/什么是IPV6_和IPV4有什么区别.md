@@ -14,7 +14,7 @@ category:
 
 2019年11月25日，负责英国、欧洲、中东和部分中亚地区互联网资源分配的欧洲网络协调中心（RIPE NCC）宣布，其最后的 IPv4 地址空间储备池在 11 月 25 日 UTC + 1 15:35 完全耗尽，所有 43 亿个 IPv4 地址已分配完毕。
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/12/15751807289857.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_30%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15751807289857.jpg)​
 
 其实，早在20世纪80年代后期开始，全球已经开始意识到这个问题将会发生。IPv6的研发及布署，主要就是为了解决这个问题。
 
@@ -22,7 +22,7 @@ category:
 
 IPv4是Internet Protocol version 4的缩写，中文翻译为互联网通信协议（TCP/IP协议）第四版，通常简称为网际协议版本4。
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/12/15751850255940.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_18%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)￼
+![](./assets/15751850255940.jpg)￼
 
 IPv4使用32位（4字节）地址，因此地址空间中只有4,294,967,296（2^32） 个地址。
 
@@ -44,7 +44,7 @@ IPv4地址可被写作任何表示一个32位整数值的形式，但为了方�
 
 而在请求过程中，一个请求数据也会从应用层到物理层经过层层包装，每一层把上一层的数据报文包装后加上一层头部信息之后再传给下一层。
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/12/15751873969926.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_54%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15751873969926.jpg)​
 
 所以，IPv4作为网络层协议，在其报文结构中，同样包含了IP首部和数据部分。
 
@@ -56,7 +56,7 @@ IPv4地址可被写作任何表示一个32位整数值的形式，但为了方�
 
 IPv4报文的首部包含14个字段，其中13个是必须的，1个是可选的。
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/12/15751888481661.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_31%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15751888481661.jpg)​
 
 上图是一张IPv4报文的首部格式，可以看到，IPv4首部中包含的内容还是很多的，比如版本号，首部长度，标识符，分片偏移，存活时间，协议等。
 
@@ -86,7 +86,7 @@ IP地址的全球性管理机构为互联网号码分配局（IANA），其下�
 
 IPv6是Internet Protocol version 6的缩写，中文翻译为互联网通信协议（TCP/IP协议）第6版，通常简称为网际协议版6。IPv6具有比IPv4大得多的编码地址空间，用它来取代IPv4主要是为了解决IPv4地址枯竭问题，同时它也在其他方面对于IPv4有许多改进。
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/12/15751850469761.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_23%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15751850469761.jpg)​
 
 IPv6具有比IPv4大得多的编码地址空间。这是因为IPv6采用128位的地址，而IPv4使用的是32位。因此新增的地址空间支持2^128 个地址，具体数量为340,282,366,920,938,463,463,374,607,431,768,211,456个（不知道有没有人能把这个数读出来？）
 
@@ -94,7 +94,7 @@ IPv6具有比IPv4大得多的编码地址空间。这是因为IPv6采用128位�
 
 IPv6二进位制下为128位长度，以16位为一组，每组以冒号“:”隔开，可以分为8组
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/12/15751864890045.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_56%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15751864890045.jpg)​
 
 IPv6文本格式为 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx，其中每个 x 都是十六进制数，表示 4 位。例如：
 
@@ -112,7 +112,7 @@ IPv6文本格式为 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx，其中每个 x 都
 
 下图是IPv6报文的首部的结构，IPv6定义了一种新的分组格式，目的是为了最小化路由器处理的消息标头。
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/12/15751886900245.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_36%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15751886900245.jpg)​
 
 从图中可以看出，和IPv4相比，IPv6的头部内容少了很多。
 
@@ -122,7 +122,7 @@ IPv6文本格式为 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx，其中每个 x 都
 
 介绍完了IPv4和IPv6，我们再来整体看下这两种协议之间的区别。
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/12/15751823743222.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_34%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15751823743222.jpg)​
 
 **地址**
 
@@ -141,7 +141,7 @@ IPv6文本格式为 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx，其中每个 x 都
 
 **IP 报头** *IPv4根据提供的 IP 选项，有 20-60 个字节的可变长度。* IPv6的报文头是 40 个字节的固定长度。没有 IP 报头选项。 \* 通常，IPv6 报头比 IPv4 报头简单。
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/12/15751887871094.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_59%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15751887871094.jpg)​
 
 **安全性**
 
@@ -164,13 +164,13 @@ IPv6文本格式为 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx，其中每个 x 都
 
 有人做了一个形象的总结，那就是『多快好省』
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/12/15751823372864.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_18%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)￼
+![](./assets/15751823372864.jpg)￼
 
 ### IPv4向IPv6的转换
 
 一方面因为IPv4的枯竭，另一方面也因为IPv6的"多快好省"，越来越多的企业开始选择使用IPv6。
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/12/15751902845542.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_29%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15751902845542.jpg)​
 
 那么，想要把IPv4网络转换到IPv6网络，需要做什么呢？
 
@@ -182,7 +182,7 @@ IPv6文本格式为 xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx，其中每个 x 都
 
 IPv4 和 IPv6 有功能相近的网络层协议，都是基于相同的硬件平台，同一个主机同时运行 IPv4 和 IPv6 两套协议栈，具有 IPv4/IPv6 双协议栈的结点称为双栈节点，这些结点既可以收发 IPv4 报文，也可以收发 IPv6 报文。它们可以使用 IPv4 与 IPv4 结点互通，也可以直接使用 IPv6 与 IPv6 结点互通。双栈节点同时包含 IPv4 和 IPv6 的网络层，但传输层协议（如 TCP 和 UDP）的使用仍然是单一的。
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/12/15751908485494.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_21%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)图源：[https://inews.gtimg.com/newsapp\_bt/0/10497932033/1000](https://inews.gtimg.com/newsapp_bt/0/10497932033/1000)
+![](./assets/15751908485494.jpg)图源：[https://inews.gtimg.com/newsapp\_bt/0/10497932033/1000](https://inews.gtimg.com/newsapp_bt/0/10497932033/1000)
 
 双栈技术的优点：
 
@@ -200,7 +200,7 @@ IPv4 和 IPv6 有功能相近的网络层协议，都是基于相同的硬件平
 
 隧道技术指将另外一个协议数据包的报头直接封装在原数据包报头前，从而可以实现在不同协议的网络上直接进行传输，这种机制用来在 IPv4 网络之上连接 IPv6 的站点，站点可以是一台主机，也可以是多个主机。隧道技术将 IPv6 的分组封装到 IPv4 的分组中，或者把 IPv4 的分组封装到 IPv6 的分组中，封装后的 IPv4 分组将通过 IPv4 的路由体系传输或者 IPv6 的分组进行传输。
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/12/15751908757676.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_23%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)图源：[https://inews.gtimg.com/newsapp\_bt/0/10497932035/1000](https://inews.gtimg.com/newsapp_bt/0/10497932035/1000)
+![](./assets/15751908757676.jpg)图源：[https://inews.gtimg.com/newsapp\_bt/0/10497932035/1000](https://inews.gtimg.com/newsapp_bt/0/10497932035/1000)
 
 隧道技术的优点：
 
@@ -219,7 +219,7 @@ IPv4 和 IPv6 有功能相近的网络层协议，都是基于相同的硬件平
 
 协议转换技（NAT-PT）附带协议转换器的网络地址转换器。是一种纯 IPv6 节点和 IPv4 节点间的互通方式，所有包括地址、协议在内的转换工作都由网络设备来完成。NAT-PT 包括静态和动态两种，两者都提供一对一的 IPv6 地址和 IPv4 地址的映射，只不过动态 NAT-PT 需要一个 IPv4 的地址池进行动态的地址转换。
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/12/15751908883894.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_21%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)图源：[https://inews.gtimg.com/newsapp\_bt/0/10497932041/1000](https://inews.gtimg.com/newsapp_bt/0/10497932041/1000)
+![](./assets/15751908883894.jpg)图源：[https://inews.gtimg.com/newsapp\_bt/0/10497932041/1000](https://inews.gtimg.com/newsapp_bt/0/10497932041/1000)
 
 **NAT-PT 技术的优点**
 

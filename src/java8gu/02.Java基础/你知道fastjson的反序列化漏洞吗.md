@@ -202,7 +202,7 @@ getFruit : Apple{price=0.5}
 
 但是在加载的过程中，fastjson有一段特殊的处理，那就是在具体加载类的时候会去掉className前后的`L`和`;`，形如`Lcom.lang.Thread;`。
 
-![](http://www.hollischuang.com/wp-content/uploads/2020/07/15938462506312.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_49%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)￼
+![](./assets/15938462506312.jpg)￼
 
 而黑白名单又是通过startWith检测的，那么黑客只要在自己想要使用的攻击类库前后加上`L`和`;`就可以绕过黑白名单的检查了，也不耽误被fastjson正常加载。
 
@@ -260,7 +260,7 @@ getFruit : Apple{price=0.5}
 
 并且指定了expectClass为Throwable.class，但是**在checkAutoType中，有这样一约定，那就是如果指定了expectClass ，那么也会通过校验。**
 
-![](http://www.hollischuang.com/wp-content/uploads/2020/07/15938495572144.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_50%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)￼
+![](./assets/15938495572144.jpg)￼
 
 因为fastjson在反序列化的时候会尝试执行里面的getter方法，而Exception类中都有一个getMessage方法。
 
@@ -293,7 +293,7 @@ at com.alibaba.fastjson.parser.ParserConfig.checkAutoType(ParserConfig.java:1244
 
 但是值得注意的是，使用这个功能，fastjson会直接禁用autoType功能，即在checkAutoType方法中，直接抛出一个异常。
 
-![](http://www.hollischuang.com/wp-content/uploads/2020/07/15938532891003.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_47%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15938532891003.jpg)​
 
 开发者可以将自己项目中使用的fastjson升级到最新版，并且如果代码中不需要用到AutoType的话，可以考虑使用safeMode，但是要评估下对历史代码的影响。
 
@@ -301,6 +301,6 @@ at com.alibaba.fastjson.parser.ParserConfig.checkAutoType(ParserConfig.java:1244
 
 之前有网友对比过：
 
-![](http://www.hollischuang.com/wp-content/uploads/2020/07/15938545656293.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_46%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15938545656293.jpg)​
 
 当然，**快的同时也带来了一些安全性问题，这是不可否认的。**

@@ -85,7 +85,7 @@ Exception in thread "Thread-1" java.lang.ArrayIndexOutOfBoundsException: Array i
 
 因为removeLast方法，有可能被多个线程同时执行，当线程2通过index()获得索引值为10，在尝试通过remove()删除该索引位置的元素之前，线程1把该索引位置的值删除掉了，这时线程一在执行时便会抛出异常。
 
-![](./assets/✅同步容器(如Vector)的所有操作一定是线程安全的吗_-1.jpeg)
+![](./assets/同步容器(如Vector)的所有操作一定是线程安全的吗_-1.jpeg)
 
 为了避免出现类似问题，可以尝试加锁：
 
@@ -120,7 +120,7 @@ for (int i = 0; i < v.size(); i++) {
 
 针对前文提到的同步容器存在的并发度低问题，从Java5开始，java.util.concurent包下，提供了大量支持高效并发的访问的集合类，我们称之为并发容器。
 
-![](./assets/✅同步容器(如Vector)的所有操作一定是线程安全的吗_-2.jpeg)
+![](./assets/同步容器(如Vector)的所有操作一定是线程安全的吗_-2.jpeg)
 
 针对前文提到的同步容器的复合操作的问题，一般在Map中发生的比较多，所以在ConcurrentHashMap中增加了对常用复合操作的支持，比如"若没有则添加"：putIfAbsent()，替换：replace()。这2个操作都是原子操作，可以保证线程安全。
 

@@ -45,7 +45,7 @@ RPC 是指计算机 A 上的进程，调用另外一台计算机 B 上的进程�
 
 就像后厨的例子一样，服务员把菜单传给后厨，厨师告诉备菜师和洗菜师开始工作，然后他等待他们完成工作。备菜师和洗菜师工作完之后，厨师开始炒菜。这个过程对于服务员来说其实是透明的，他不需要关心到底后厨是怎么做菜的。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/12/15442669374513.gif)￼
+![](./assets/15442669374513.gif)￼
 
 由于各服务部署在不同机器上，要想在服务间进行远程调用免不了网络通信过程，服务消费方每调用一个服务都要写一坨网络通信相关的代码，不仅复杂而且极易出错。
 
@@ -53,7 +53,7 @@ RPC 是指计算机 A 上的进程，调用另外一台计算机 B 上的进程�
 
 在RPC框架中主要有三个角色：Provider、Consumer和Registry。如下图所示：
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/12/15442678994512.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_15%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15442678994512.jpg)​
 
 Server: 暴露服务的服务提供方。
 
@@ -69,7 +69,7 @@ Registry: 服务注册与发现的注册中心。
 
 这个中间人就是服务注册中心。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/12/15442683038459.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_14%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)￼
+![](./assets/15442683038459.jpg)￼
 
 服务提供者启动后主动向注册中心注册机器ip、port以及提供的服务列表； 服务消费者启动时向注册中心获取服务提供方地址列表，可实现软负载均衡和Failover；
 

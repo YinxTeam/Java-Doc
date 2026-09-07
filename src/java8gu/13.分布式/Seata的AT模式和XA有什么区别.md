@@ -27,11 +27,11 @@ Seata中的AT模式其实和2PC很像，都是把一个分布式事务分成了2
 
 所以，AT的性能是明显高于XA的，因为在一阶段已经执行了实际的数据库操作，并不需要做资源的占用和锁定，而二阶段也只是在失败的情况下再执行回滚，所以性能相对较高。
 
-![](https://www.hollischuang.com/wp-content/uploads/2024/06/17187877341161.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_21%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/17187877341161.jpg)
 
 而XA这种模式由于需要锁定资源直到二阶段结束，对数据库性能有较大影响，尤其在高并发环境下。
 
-![](https://www.hollischuang.com/wp-content/uploads/2024/06/17187877283965.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_21%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/17187877283965.jpg)
 
 而在一致性方面，XA确实要比AT好的，因为在一阶段所有参与者都只进行预提交操作，二阶段再根据协调器的决定进行实际提交或回滚，确保了全局事务的一致性。
 

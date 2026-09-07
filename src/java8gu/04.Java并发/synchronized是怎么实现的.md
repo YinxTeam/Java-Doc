@@ -90,11 +90,11 @@ public void doSth1(){
 
 先来举个例子，然后我们再上源码。我们可以把监视器理解为包含一个特殊的房间的建筑物，这个特殊房间同一时刻只能有一个客人（线程）。这个房间中包含了一些数据和代码。
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/11/165dc67181a2c632.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_15%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/165dc67181a2c632.jpg)
 
 如果一个顾客想要进入这个特殊的房间，他首先需要在走廊（Entry Set）排队等待。调度器将基于某个标准（比如 FIFO）来选择排队的客户进入房间。如果，因为某些原因，该客户暂时因为其他事情无法脱身（线程被挂起），那么他将被送到另外一间专门用来等待的房间（Wait Set），这个房间的可以在稍后再次进入那件特殊的房间。如上面所说，这个建筑屋中一共有三个场所。
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/11/165dc6718182c75f.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_14%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/165dc6718182c75f.jpg)
 
 总之，监视器是一个用来监视这些线程进入特殊的房间的。他的义务是保证（同一时间）只有一个线程可以访问被保护的数据和代码。
 
@@ -145,7 +145,7 @@ ObjectMonitor 中有几个关键属性：
 
 若持有 monitor 的线程调用 `wait()` 方法，将释放当前持有的 monitor，`_owner` 变量恢复为 `null`，`_count` 自减 1，同时该线程进入 `_WaitSet` 集合中等待被唤醒。若当前线程执行完毕也将释放 monitor(锁)并复位变量的值，以便其他线程进入获取 monitor(锁)。如下图所示
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/11/165dc6718151f32f.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_15%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/165dc6718151f32f.png)
 
 下面是 ObjectMonitor 类中提供的几个方法，我在关键节点处都增加了注释，便于读者阅读，可以对照上面的例子以及后文的流程图进行理解。
 
@@ -208,7 +208,7 @@ void ATTR ObjectMonitor::enter(TRAPS) {
 }
 ```
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/11/165dc671817e245b.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_20%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/165dc671817e245b.png)
 
 释放锁
 
@@ -248,7 +248,7 @@ void ATTR ObjectMonitor::exit(TRAPS) {
    //省略部分代码，根据不同的策略（由QMode指定），从cxq或EntryList中获取头节点，通过ObjectMonitor::ExitEpilog方法唤醒该节点封装的线程，唤醒操作最终由unpark完成。
 ```
 
-![](http://www.hollischuang.com/wp-content/uploads/2019/11/165dc6718278c2dc.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_18%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/165dc6718278c2dc.png)
 
 除了 enter 和 exit 方法以外，[objectMonitor.cpp][3]中还有
 

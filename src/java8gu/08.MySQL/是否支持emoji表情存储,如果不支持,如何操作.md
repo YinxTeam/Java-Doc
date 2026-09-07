@@ -37,7 +37,7 @@ Unicode字符集，他现在已经是计算机科学领域里的一项业界标�
 
 在MySQL官方文档中，介绍了支持的编码方式之后，还有一段醒目的提醒：
 
-![](http://www.hollischuang.com/wp-content/uploads/2021/05/16205427559305.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_60%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/16205427559305.jpg)​
 
 翻译过来是：**utf8mb3字符集已被弃用，它在未来的MySQL版本中将会被删除，请使用utf8mb4代替。在目前的8.0版本中，utf8指的就是utf8mb3，虽然未来可能改成utf8mb4，但是为了避免产生歧义，可以考虑为字符集引用显式指定utf8mb4，而不是utf8。**
 

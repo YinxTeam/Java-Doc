@@ -42,7 +42,7 @@ DoS（拒绝服务，Denial of Service）就是利用合理的服务请求来占
 
 无赖们扮作普通客户一直拥挤在商场，赖着不走，真正的购物者却无法进入；或者总是和营业员有一搭没一搭的东扯西扯，让工作人员不能正常服务客户；也可以为商铺的经营者提供虚假信息，商铺的上上下下忙成一团之后却发现都是一场空，最终跑了真正的大客户，损失惨重。一个无赖去胡闹，就是 DoS攻击，而一群无赖去胡闹，就是 DDoS攻击。
 
-![](http://www.hollischuang.com/wp-content/uploads/2018/12/15436414165546.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_21%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/15436414165546.png)​
 
 一般来说，DDoS 攻击可以具体分成两种形式：带宽消耗型以及资源消耗型。它们都是透过大量合法或伪造的请求占用大量网络以及器材资源，以达到瘫痪网络以及系统的目的。
 

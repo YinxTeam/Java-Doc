@@ -71,19 +71,15 @@ public class Main {
 为了验证死锁线程会不会导致CPU使用率升高，我们需要弄许多线程死锁，这样才能模拟出线上环境业务线程多，并且因为业务代码错误导致的死锁，来观察对CPU的影响。  
 运行前的CPU使用率
 
-![](./5.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_9%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
-
 ![](./assets/死锁会导致CPU使用率升高吗_为什么_-1.png)
 
 运行后的CPU使用率
-
-![](./6.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_9%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
 
 ![](./assets/死锁会导致CPU使用率升高吗_为什么_-2.png)
 
 从图中可以看到CPU使用率并没有明显升高，java进程占用的CPU非常低。
 
-`jstack -l`![](./7.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_9%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+`jstack -l`
 
 ![7.png](./assets/死锁会导致CPU使用率升高吗_为什么_-3.png)
 
@@ -97,7 +93,7 @@ jstack -l <java进程pid>|grep Thread1| awk -v FS='nid=| ' '{print $9}' |xargs p
 top -Hp <java进程pid> #查看线程状态
 ```
 
-![](./8.png?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_9%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)![](./assets/死锁会导致CPU使用率升高吗_为什么_-4.png)
+![](./assets/死锁会导致CPU使用率升高吗_为什么_-4.png)
 
 第一列为线程的pid，可以看到状态列为`S`，代表线程处在`sleeping`状态，因为拿不到锁让出CPU的使用权。  
 CPU使率用是统计online-cpu的任务，即任务状态为`running`的任务。所以印证了死锁不会导致CPU使用率升高的结论。之所以线上出现死锁使用率降低，是因为死锁后业务代码无法继续运行，导致使用率会降低。

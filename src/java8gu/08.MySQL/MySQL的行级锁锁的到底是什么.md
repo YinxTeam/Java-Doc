@@ -26,7 +26,7 @@ Next-Key Lock是Record Lock和Gap Lock的组合，同时锁索引记录和间隙
 
 **Record Lock，翻译成记录锁，是加在索引记录上的锁。**例如，`SELECT c1 FROM t WHERE c1 = 10 For UPDATE;`会对c1=10这条记录加锁，为了防止任何其他事务插入、更新或删除c1值为10的行。
 
-![](http://www.hollischuang.com/wp-content/uploads/2022/03/16313419014489.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_22%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/16313419014489.jpg)​
 
 ## Gap Lock
 
@@ -38,7 +38,7 @@ Next-Key Lock是Record Lock和Gap Lock的组合，同时锁索引记录和间隙
 
 当你用语句SELECT…FOR UPDATE锁定一组行时。InnoDB可以创建锁，应用于索引中的实际值以及他们之间的间隙。例如，如果选择所有大于10的值进行更新，间隙锁将阻止另一个事务插入大于10的新值。
 
-![](http://www.hollischuang.com/wp-content/uploads/2022/03/16313418798174.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_20%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)
+![](./assets/16313418798174.jpg)
 
 （实际会锁到+∞，这里为了演示什么是gap简化了一下）
 
@@ -55,7 +55,7 @@ Next-Key Lock是Record Lock和Gap Lock的组合，同时锁索引记录和间隙
 
 Next-Key锁是索引记录上的记录锁和索引记录之前间隙上的间隙锁的组合。
 
-![](http://www.hollischuang.com/wp-content/uploads/2022/03/16313418544575.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_23%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/16313418544575.jpg)​
 
 假设一个索引包含值10、11、13和20。此索引可能的next-key锁包括以下区间:
 
@@ -89,7 +89,7 @@ Next-Key Lock和Gap Lock一样，只有在InnoDB的RR隔离级别中才会生效
 
 假如，数据库表中当前有以下记录：
 
-![](http://www.hollischuang.com/wp-content/uploads/2022/03/16313425680103.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_29%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/16313425680103.jpg)​
 
 当我们执行`update t set d=d+1 where id = 7`的时候，由于表 t 中没有 id=7 的记录，所以：
 
@@ -110,7 +110,7 @@ Next-Key Lock和Gap Lock一样，只有在InnoDB的RR隔离级别中才会生效
 
 假如，数据库表中当前有以下记录：
 
-![](http://www.hollischuang.com/wp-content/uploads/2022/03/16313428606603.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LW1pY3JvaGVp%2Csize_29%2Ctext_SmF2YSA4IEd1IEo%3D%2Ccolor_FFFFFF%2Cshadow_50%2Ct_80%2Cg_se%2Cx_10%2Cy_10)​
+![](./assets/16313428606603.jpg)​
 
 当我们执行`select id from t where c=5 lock in share mode`的时候：
 
